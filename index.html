@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kairos — KovaaK's Benchmark Companion</title>
+<meta name="description" content="Kairos tracks every KovaaK's benchmark, watches ranks climb, and shows per-scenario improvement — in a neon-soaked native app. No login, no accounts, local-first.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0e14; --panel:#111827; --panel-raised:#161f31;
+  --accent:#ff2e88; --accent-2:#00e5ff; --success:#10b981; --warn:#f59e0b;
+  --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937;
+  --glow-magenta:0 0 10px rgba(255,46,136,.45),0 0 28px rgba(255,46,136,.18);
+  --glow-cyan:0 0 10px rgba(0,229,255,.4),0 0 28px rgba(0,229,255,.15);
+  --radius:12px;
+  --sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --display:'Orbitron',var(--sans);
+  --mono:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:var(--sans); font-size:15px; line-height:1.6; overflow-x:hidden;
+}
+body::after{ /* CRT scanlines, same as the app */
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:9999;
+  background:repeating-linear-gradient(to bottom,rgba(255,255,255,.022) 0 1px,transparent 1px 3px);
+}
+body::before{ /* ambient neon wash */
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(600px 300px at 15% -5%,rgba(255,46,136,.09),transparent 60%),
+    radial-gradient(700px 340px at 85% 10%,rgba(0,229,255,.08),transparent 60%);
+}
+a{color:var(--accent-2); text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1120px; margin:0 auto; padding:0 24px; position:relative; z-index:1}
+.num{font-family:var(--mono); font-variant-numeric:tabular-nums}
+
+/* --- nav --- */
+nav.top{
+  position:sticky; top:0; z-index:100;
+  background:rgba(10,14,20,.88); backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+}
+nav.top .wrap{display:flex; align-items:center; gap:22px; padding-top:12px; padding-bottom:12px}
+.logo{font-family:var(--display); font-weight:800; letter-spacing:.3em; color:var(--accent); text-shadow:var(--glow-magenta); font-size:18px}
+.logo:hover{text-decoration:none}
+nav.links{display:flex; gap:18px; margin-left:auto; font-size:13.5px}
+nav.links a{color:var(--muted)}
+nav.links a:hover{color:var(--accent-2); text-decoration:none}
+.btn{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:10px 20px; border:1px solid var(--border); border-radius:8px;
+  background:var(--panel-raised); color:var(--text); font-weight:600; font-size:14px;
+  transition:border-color .15s,box-shadow .15s,color .15s;
+}
+.btn:hover:not(:disabled){border-color:var(--accent-2); color:var(--accent-2); box-shadow:var(--glow-cyan); text-decoration:none}
+.btn-accent{border-color:var(--accent); color:var(--accent); background:rgba(255,46,136,.08)}
+.btn-accent:hover:not(:disabled){border-color:var(--accent); color:#fff; box-shadow:var(--glow-magenta)}
+.btn-sm{padding:7px 14px; font-size:13px}
+
+/* --- hero --- */
+header.hero{padding:96px 0 64px; text-align:center}
+.kicker{
+  display:inline-block; font-family:var(--mono); font-size:12px; letter-spacing:.18em;
+  color:var(--accent-2); border:1px solid var(--border); border-radius:999px;
+  padding:5px 16px; margin-bottom:22px; background:rgba(0,229,255,.05);
+}
+h1.mega{
+  font-family:var(--display); font-weight:800; font-size:clamp(44px,8vw,84px);
+  letter-spacing:.18em; margin:0 0 8px; color:#fff;
+  text-shadow:0 0 18px rgba(255,46,136,.55),0 0 60px rgba(255,46,136,.25);
+}
+.sub{font-size:clamp(16px,2.4vw,21px); color:var(--muted); max-width:680px; margin:0 auto 10px}
+.sub strong{color:var(--text)}
+.cta-row{display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin:28px 0 18px}
+.badges{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; font-family:var(--mono); font-size:12px; color:var(--muted)}
+.badges span{border:1px solid var(--border); border-radius:6px; padding:3px 10px; background:var(--panel)}
+.hero-shot{margin-top:44px; border:1px solid var(--border); border-radius:14px; overflow:hidden; box-shadow:0 20px 80px rgba(0,0,0,.5),var(--glow-cyan)}
+.hero-shot img{display:block; width:100%; height:auto}
+.hero-shot figcaption{font-size:12.5px; color:var(--muted); padding:10px 16px; background:var(--panel); text-align:left; border-top:1px solid var(--border)}
+
+/* --- sections --- */
+section{padding:64px 0 8px}
+h2.sec{
+  font-family:var(--display); font-size:13px; font-weight:700; letter-spacing:.28em;
+  color:var(--accent-2); margin:0 0 6px; text-transform:uppercase;
+}
+p.lead{font-size:19px; margin:0 0 28px; font-weight:600}
+p.lead small{display:block; font-size:14px; font-weight:400; color:var(--muted); margin-top:6px}
+
+/* stat strip */
+.stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin:26px 0 0}
+.stat{background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:16px 18px}
+.stat b{display:block; font-size:26px; font-family:var(--mono); color:#fff}
+.stat b em{font-style:normal; color:var(--accent-2)}
+.stat span{font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted)}
+
+/* feature grid */
+.grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:14px}
+.card{background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:20px; transition:border-color .15s,box-shadow .15s}
+.card:hover{border-color:rgba(0,229,255,.5); box-shadow:var(--glow-cyan)}
+.card .ico{font-size:22px}
+.card h3{margin:10px 0 6px; font-size:15.5px; letter-spacing:.02em}
+.card p{margin:0; font-size:13.5px; color:var(--muted)}
+.card p code{font-family:var(--mono); font-size:12.5px; color:var(--accent-2)}
+
+/* screenshots */
+.shots{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+@media(max-width:760px){.shots{grid-template-columns:1fr}}
+figure.shot{margin:0; background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden}
+figure.shot img{display:block; width:100%; height:auto; cursor:zoom-in}
+figure.shot figcaption{padding:12px 16px; font-size:13px; color:var(--muted); border-top:1px solid var(--border)}
+figure.shot figcaption strong{color:var(--text); display:block; font-size:14px; margin-bottom:2px}
+
+/* how it works */
+.flow{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; margin-bottom:16px}
+.flow .step{background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:20px}
+.flow .n{font-family:var(--mono); color:var(--accent); font-size:12px; letter-spacing:.15em}
+.flow h3{margin:8px 0 6px; font-size:15px}
+.flow p{margin:0; font-size:13.5px; color:var(--muted)}
+.privacy{
+  border:1px solid rgba(16,185,129,.4); background:rgba(16,185,129,.06);
+  border-radius:var(--radius); padding:16px 20px; font-size:14px;
+}
+.privacy code{font-family:var(--mono); font-size:13px; color:var(--success)}
+
+/* download */
+.dl{display:grid; grid-template-columns:1.2fr .8fr; gap:16px}
+@media(max-width:760px){.dl{grid-template-columns:1fr}}
+.dl .panel{background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:24px}
+.dl ol{margin:12px 0 0; padding-left:20px; color:var(--muted); font-size:14px}
+.dl ol li{margin-bottom:10px}
+.dl ol strong{color:var(--text)}
+pre.term{
+  background:#070b11; border:1px solid var(--border); border-radius:8px;
+  padding:14px 16px; font-family:var(--mono); font-size:12.5px; color:#c9f5ff;
+  overflow-x:auto; line-height:1.7; margin:12px 0 0;
+}
+pre.term .c{color:#5b6577} pre.term .k{color:var(--accent)}
+
+/* roadmap */
+.rm-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:14px}
+.rm{background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:20px 22px}
+.rm.now{border-color:rgba(255,46,136,.55); box-shadow:var(--glow-magenta)}
+.rm h3{margin:0 0 4px; font-size:15px; font-family:var(--mono)}
+.rm h3 .tag{font-size:10px; letter-spacing:.12em; border:1px solid var(--accent); color:var(--accent); border-radius:5px; padding:1px 7px; margin-left:8px; vertical-align:2px}
+.rm.next h3 .tag{border-color:var(--accent-2); color:var(--accent-2)}
+.rm ul{margin:10px 0 0; padding:0; list-style:none; font-size:13.5px; color:var(--muted)}
+.rm li{margin-bottom:8px; padding-left:24px; position:relative}
+.rm li::before{content:'○'; position:absolute; left:2px; color:var(--accent-2)}
+.rm li.done::before{content:'●'; color:var(--success)}
+.rm li.done{color:var(--text)}
+
+/* lightbox */
+#lightbox{position:fixed; inset:0; z-index:10000; background:rgba(4,6,10,.92); display:none; align-items:center; justify-content:center; padding:24px; cursor:zoom-out}
+#lightbox.open{display:flex}
+#lightbox img{max-width:100%; max-height:92vh; border:1px solid var(--border); border-radius:10px}
+
+/* footer */
+footer{margin-top:72px; border-top:1px solid var(--border); padding:28px 0 40px; color:var(--muted); font-size:13px}
+footer .wrap{display:flex; gap:16px; flex-wrap:wrap; align-items:center}
+footer .sp{margin-left:auto; font-family:var(--mono); font-size:12px}
+
+/* reveal */
+.rv{opacity:0; transform:translateY(14px); transition:opacity .5s,transform .5s}
+.rv.in{opacity:1; transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1; transform:none} html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="wrap">
+    <a class="logo" href="#top">KAIROS</a>
+    <div class="links">
+      <a href="#features">Features</a>
+      <a href="#screenshots">Screenshots</a>
+      <a href="#how">How it works</a>
+      <a href="#download">Download</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="https://github.com/Digitals06/kairos" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap" id="top">
+  <header class="hero">
+    <span class="kicker">KOVAAK'S FPS AIM TRAINER · DESKTOP COMPANION</span>
+    <h1 class="mega">KAIROS</h1>
+    <p class="sub"><strong>Track every benchmark. Watch ranks climb.</strong><br>Per-scenario improvement over time — in a neon-soaked native app. No login, no accounts. Your data stays in a local file on your PC.</p>
+    <div class="cta-row">
+      <a class="btn btn-accent" href="https://github.com/Digitals06/kairos/releases" target="_blank" rel="noopener">⬇ Download kairos.exe</a>
+      <a class="btn" href="https://github.com/Digitals06/kairos" target="_blank" rel="noopener">View source on GitHub</a>
+    </div>
+    <div class="badges"><span>Rust</span><span>Tauri v2</span><span>Svelte 5</span><span>Chart.js</span><span>SQLite · local-first</span><span>MIT</span></div>
+    <figure class="hero-shot rv" style="margin-left:0;margin-right:0">
+      <img src="assets/app-overview.png" alt="Kairos benchmark overview grid with rank chips">
+      <figcaption>Live capture — the benchmark grid with rank chips, favorites, and sync status.</figcaption>
+    </figure>
+  </header>
+
+  <section id="features">
+    <h2 class="sec">// Features</h2>
+    <p class="lead">Everything the grind needs, nothing it doesn't.<small>All ranks recomputed locally by Kairos' own engine — the server's stored rank is only a fallback.</small></p>
+    <div class="stats rv">
+      <div class="stat"><b><em>~97%</em></b><span>client-side rank coverage</span></div>
+      <div class="stat"><b>ALL</b><span>evxl benchmark families</span></div>
+      <div class="stat"><b class="num">0</b><span>accounts · logins · telemetry</span></div>
+      <div class="stat"><b>1 <em>file</em></b><span>your whole database</span></div>
+    </div>
+    <div class="grid" style="margin-top:14px">
+      <div class="card rv"><div class="ico">🎯</div><h3>evxl-accurate ranks, computed locally</h3><p>Reverse-engineered from evxl.app: Voltaic energy, harmonic / top-N / count-based methods and more. Verified against live benchmarks.</p></div>
+      <div class="card rv"><div class="ico">🔔</div><h3>Rank-change toasts</h3><p>Every sync diffs your two newest snapshots per benchmark. Rank moves? A <code>RANK UP</code> toast with old → new tier, or one summary when several shift.</p></div>
+      <div class="card rv"><div class="ico">⚡</div><h3>Live local plays</h3><p>A background watcher reads KovaaK's <code>Stats</code> folder while the app is open — new sessions land in your charts on their own. No refresh click.</p></div>
+      <div class="card rv"><div class="ico">🗂</div><h3>Full benchmark coverage</h3><p>Every benchmark tracked on <a href="https://evxl.app" target="_blank" rel="noopener">evxl.app</a> — Voltaic, Revosect, PureG, Aimerz+ and the rest — with official rank names and colors.</p></div>
+      <div class="card rv"><div class="ico">🔄</div><h3>One-click sync, polite by default</h3><p>Quick pass for your mains, Deep Scan for everything. Smart sync skips benchmarks whose CSVs haven't changed; throttles get patient retries.</p></div>
+      <div class="card rv"><div class="ico">📈</div><h3>Per-scenario detail</h3><p>Score-history chart (local plays + snapshots, deduplicated), 7-day average, running high, avg/high scores, 30-day improvement %. Stale non-PB syncs never pollute the charts.</p></div>
+      <div class="card rv"><div class="ico">📌</div><h3>Search + favorites</h3><p>Filter the grid by name, pin benchmarks to the top. Pins survive restarts. Registry updater keeps new seasons coming without a rebuild.</p></div>
+      <div class="card rv"><div class="ico">🔒</div><h3>Private by design</h3><p>No accounts, no telemetry — only public APIs. Live API tests skip unless you opt in. Auto-sync on launch with a “last synced X ago” indicator.</p></div>
+    </div>
+  </section>
+
+  <section id="screenshots">
+    <h2 class="sec">// Screenshots</h2>
+    <p class="lead">Straight from the app.<small>Click any image to zoom. All captured live from v0.1.5.</small></p>
+    <div class="shots">
+      <figure class="shot rv"><img src="assets/app-grid-scrolled.png" alt="Kairos benchmark grid showing many benchmark families" loading="lazy"><figcaption><strong>Benchmark grid</strong>Dozens of families — Astro, Avasive S1, Catburg, Dantes, Dark &amp; Rafal… with official rank colors.</figcaption></figure>
+      <figure class="shot rv"><img src="assets/app-search.png" alt="Kairos grid filtered by search for voltaic" loading="lazy"><figcaption><strong>Search + favorites</strong>Type to filter the grid by name; pins stay on top.</figcaption></figure>
+      <figure class="shot rv"><img src="assets/app-detail-top.png" alt="Kairos Tracer Benchmark Hard detail on Smoothbot scenario" loading="lazy"><figcaption><strong>Scenario deep-dive</strong>Tracer Benchmark Hard on Smoothbot Pauer Close Smooth (4 entries): avg/high, 7-day average, 30-day improvement.</figcaption></figure>
+      <figure class="shot rv"><img src="assets/app-detail-chart.png" alt="Kairos 7-entry score history chart with local plays" loading="lazy"><figcaption><strong>Score history</strong>Avasive S2 Easier, AngelClick Revolving — 7 runs on one chart. Magenta dots are local CSV plays, the rest sync snapshots, deduplicated.</figcaption></figure>
+    </div>
+  </section>
+
+  <section id="how">
+    <h2 class="sec">// How it works</h2>
+    <p class="lead">Three public sources in, one local file out.<small>Nothing is uploaded anywhere. Ever.</small></p>
+    <div class="flow">
+      <div class="step rv"><div class="n">01 · SCORES</div><h3>KovaaK's public score server</h3><p>Scores, ranks and leaderboard positions. No login needed — only public endpoints.</p></div>
+      <div class="step rv"><div class="n">02 · DEFINITIONS</div><h3>evxl.app lookup + registry</h3><p>Finds your profile plus benchmark and rank definitions, cached with a version stamp.</p></div>
+      <div class="step rv"><div class="n">03 · LOCAL TRUTH</div><h3>Your <span class="num">Stats</span> folder</h3><p><span class="num">*.csv</span> local play history, watched live while the app runs. <span class="num">Refresh Local</span> re-scans without touching the network.</p></div>
+    </div>
+    <div class="privacy rv">💾 Everything lands in one file: <code>%LOCALAPPDATA%\kairos\store.db</code> — back it up, move it, it's yours.</div>
+  </section>
+
+  <section id="download">
+    <h2 class="sec">// Get Kairos</h2>
+    <p class="lead">Running in under a minute.<small>Windows 10/11 · free · MIT licensed</small></p>
+    <div class="dl">
+      <div class="panel rv">
+        <a class="btn btn-accent" href="https://github.com/Digitals06/kairos/releases" target="_blank" rel="noopener">⬇ Get kairos.exe — latest release</a>
+        <ol>
+          <li><strong>Download</strong> <span class="num">kairos.exe</span> from the <a href="https://github.com/Digitals06/kairos/releases" target="_blank" rel="noopener">latest release</a> and double-click it.</li>
+          <li><strong>Enter your Steam ID</strong> (or vanity name / profile link).</li>
+          <li><strong>Hit Sync Now</strong> — your benchmarks roll in, ranks computed locally.</li>
+        </ol>
+      </div>
+      <div class="panel rv">
+        <strong>Build from source</strong>
+        <pre class="term"><span class="c"># needs: git · rust · node 24</span>
+git clone https://github.com/Digitals06/kairos.git
+cd kairos\crates\kovaaks-tauri\ui
+npm install &amp;&amp; npm run build
+cd ..\src-tauri
+<span class="k">cargo build --release --features custom-protocol</span></pre>
+        <p style="font-size:13px;color:var(--muted);margin:12px 0 0">Full steps in the <a href="https://github.com/Digitals06/kairos#readme" target="_blank" rel="noopener">README</a>. If Kairos helps your grind, <a href="https://ko-fi.com/Q2S1237A82" target="_blank" rel="noopener">support it on Ko-fi ☕</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="roadmap">
+    <h2 class="sec">// Roadmap</h2>
+    <p class="lead">Shipped when done and verified. No dates.<small>Tracked in <a href="https://github.com/Digitals06/kairos/blob/main/ROADMAP.md" target="_blank" rel="noopener">ROADMAP.md</a> — open development, public but small.</small></p>
+    <div class="rm-grid">
+      <div class="rm now rv">
+        <h3>v0.1.5 <span class="tag">CURRENT</span></h3>
+        <ul>
+          <li class="done">Same-run consolidation — one authoritative merged series</li>
+          <li class="done">Smart sync — only re-probe changed CSVs (mtime-based)</li>
+          <li class="done">Registry updater — new seasons without a rebuild</li>
+          <li class="done">Auto-sync on launch + “last synced X ago”</li>
+          <li class="done">“What to grind next” — design pass complete</li>
+        </ul>
+      </div>
+      <div class="rm next rv">
+        <h3>v0.2 <span class="tag">NEXT</span></h3>
+        <ul>
+          <li>Benchmark dashboard — rank chips + progress-to-next bars</li>
+          <li>Weekly report — time trained, trends, rank changes</li>
+          <li>Windows installer (NSIS via Tauri bundler)</li>
+          <li>100% client-side rank coverage</li>
+          <li>History export (JSON/CSV) + streaks / XP meta-progression</li>
+        </ul>
+      </div>
+      <div class="rm rv">
+        <h3>LATER <span class="tag" style="border-color:var(--border);color:var(--muted)">UNPROMISED</span></h3>
+        <ul>
+          <li>Tray mode · auto-launch when KovaaK's starts</li>
+          <li>Reconcile view — API vs local CSV discrepancy report</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap" style="padding:0">
+      <span>KAIROS · MIT · built with Rust, Tauri v2, Svelte 5, Chart.js</span>
+      <a href="https://github.com/Digitals06/kairos" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://ko-fi.com/Q2S1237A82" target="_blank" rel="noopener">Ko-fi</a>
+      <span class="sp">not affiliated with KovaaK's or evxl.app</span>
+    </div>
+  </footer>
+</div>
+
+<div id="lightbox"><img src="" alt="Kairos screenshot enlarged"></div>
+
+<script>
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+}), { threshold: 0.12 });
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+const lb = document.getElementById('lightbox');
+const lbImg = lb.querySelector('img');
+document.querySelectorAll('figure.shot img, .hero-shot img').forEach(img => {
+  img.addEventListener('click', () => { lbImg.src = img.src; lb.classList.add('open'); });
+});
+lb.addEventListener('click', () => lb.classList.remove('open'));
+addEventListener('keydown', e => { if (e.key === 'Escape') lb.classList.remove('open'); });
+</script>
+</body>
+</html>
