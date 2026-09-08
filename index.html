@@ -38,6 +38,7 @@ body::before{ /* ambient neon wash */
 }
 a{color:var(--accent-2); text-decoration:none}
 a:hover{text-decoration:underline}
+img{max-width:100%}
 .wrap{max-width:1120px; margin:0 auto; padding:0 24px; position:relative; z-index:1}
 .num{font-family:var(--mono); font-variant-numeric:tabular-nums}
 
@@ -48,10 +49,10 @@ nav.top{
   border-bottom:1px solid var(--border);
 }
 nav.top .wrap{display:flex; align-items:center; gap:22px; padding-top:12px; padding-bottom:12px}
-.logo{font-family:var(--display); font-weight:800; letter-spacing:.3em; color:var(--accent); text-shadow:var(--glow-magenta); font-size:18px}
+.logo{font-family:var(--display); font-weight:800; letter-spacing:.3em; color:var(--accent); text-shadow:var(--glow-magenta); font-size:18px; white-space:nowrap}
 .logo:hover{text-decoration:none}
 nav.links{display:flex; gap:18px; margin-left:auto; font-size:13.5px}
-nav.links a{color:var(--muted)}
+nav.links a{color:var(--muted); white-space:nowrap}
 nav.links a:hover{color:var(--accent-2); text-decoration:none}
 .btn{
   display:inline-flex; align-items:center; gap:8px;
@@ -95,14 +96,14 @@ p.lead{font-size:19px; margin:0 0 28px; font-weight:600}
 p.lead small{display:block; font-size:14px; font-weight:400; color:var(--muted); margin-top:6px}
 
 /* stat strip */
-.stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin:26px 0 0}
+.stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr)); gap:14px; margin:26px 0 0}
 .stat{background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:16px 18px}
 .stat b{display:block; font-size:26px; font-family:var(--mono); color:#fff}
 .stat b em{font-style:normal; color:var(--accent-2)}
 .stat span{font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted)}
 
 /* feature grid */
-.grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:14px}
+.grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr)); gap:14px}
 .card{background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:20px; transition:border-color .15s,box-shadow .15s}
 .card:hover{border-color:rgba(0,229,255,.5); box-shadow:var(--glow-cyan)}
 .card .ico{font-size:22px}
@@ -119,7 +120,7 @@ figure.shot figcaption{padding:12px 16px; font-size:13px; color:var(--muted); bo
 figure.shot figcaption strong{color:var(--text); display:block; font-size:14px; margin-bottom:2px}
 
 /* how it works */
-.flow{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; margin-bottom:16px}
+.flow{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr)); gap:14px; margin-bottom:16px}
 .flow .step{background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:20px}
 .flow .n{font-family:var(--mono); color:var(--accent); font-size:12px; letter-spacing:.15em}
 .flow h3{margin:8px 0 6px; font-size:15px}
@@ -133,24 +134,25 @@ figure.shot figcaption strong{color:var(--text); display:block; font-size:14px; 
 /* download */
 .dl{display:grid; grid-template-columns:1.2fr .8fr; gap:16px}
 @media(max-width:760px){.dl{grid-template-columns:1fr}}
-.dl .panel{background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:24px}
+.dl .panel{background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:24px; min-width:0}
 .dl ol{margin:12px 0 0; padding-left:20px; color:var(--muted); font-size:14px}
 .dl ol li{margin-bottom:10px}
 .dl ol strong{color:var(--text)}
 pre.term{
   background:#070b11; border:1px solid var(--border); border-radius:8px;
   padding:14px 16px; font-family:var(--mono); font-size:12.5px; color:#c9f5ff;
-  overflow-x:auto; line-height:1.7; margin:12px 0 0;
+  overflow-x:auto; line-height:1.7; margin:12px 0 0; max-width:100%;
 }
 pre.term .c{color:#5b6577} pre.term .k{color:var(--accent)}
 
 /* roadmap */
-.rm-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:14px}
+.rm-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr)); gap:14px}
 .rm{background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:20px 22px}
 .rm.now{border-color:rgba(255,46,136,.55); box-shadow:var(--glow-magenta)}
 .rm h3{margin:0 0 4px; font-size:15px; font-family:var(--mono)}
-.rm h3 .tag{font-size:10px; letter-spacing:.12em; border:1px solid var(--accent); color:var(--accent); border-radius:5px; padding:1px 7px; margin-left:8px; vertical-align:2px}
+.rm h3 .tag{font-size:10px; letter-spacing:.12em; border:1px solid var(--accent); color:var(--accent); border-radius:5px; padding:1px 7px; margin-left:8px; vertical-align:2px; white-space:nowrap}
 .rm.next h3 .tag{border-color:var(--accent-2); color:var(--accent-2)}
+.rm.shipped h3 .tag{border-color:var(--success); color:var(--success)}
 .rm ul{margin:10px 0 0; padding:0; list-style:none; font-size:13.5px; color:var(--muted)}
 .rm li{margin-bottom:8px; padding-left:24px; position:relative}
 .rm li::before{content:'○'; position:absolute; left:2px; color:var(--accent-2)}
@@ -166,6 +168,26 @@ pre.term .c{color:#5b6577} pre.term .k{color:var(--accent)}
 footer{margin-top:72px; border-top:1px solid var(--border); padding:28px 0 40px; color:var(--muted); font-size:13px}
 footer .wrap{display:flex; gap:16px; flex-wrap:wrap; align-items:center}
 footer .sp{margin-left:auto; font-family:var(--mono); font-size:12px}
+
+/* --- mobile --- */
+@media(max-width:640px){
+  .wrap{padding:0 16px}
+  nav.top .wrap{flex-wrap:wrap; gap:8px 14px; padding-top:10px; padding-bottom:10px}
+  .logo{font-size:16px}
+  nav.links{margin-left:0; flex-wrap:wrap; gap:6px 14px; font-size:12.5px}
+  header.hero{padding:56px 0 36px}
+  .kicker{font-size:10px; letter-spacing:.12em; line-height:1.8}
+  h1.mega{letter-spacing:.12em}
+  section{padding:40px 0 4px}
+  p.lead{font-size:17px}
+  .hero-shot{margin-top:28px}
+  .card{padding:16px}
+  .dl .panel{padding:18px}
+  .rm{padding:18px}
+  pre.term{font-size:11px; padding:12px}
+  footer{margin-top:48px}
+  footer .sp{margin-left:0; flex-basis:100%}
+}
 
 /* reveal */
 .rv{opacity:0; transform:translateY(14px); transition:opacity .5s,transform .5s}
@@ -198,10 +220,10 @@ footer .sp{margin-left:auto; font-family:var(--mono); font-size:12px}
       <a class="btn btn-accent" href="https://github.com/Digitals06/kairos/releases" target="_blank" rel="noopener">⬇ Download kairos.exe</a>
       <a class="btn" href="https://github.com/Digitals06/kairos" target="_blank" rel="noopener">View source on GitHub</a>
     </div>
-    <div class="badges"><span>Rust</span><span>Tauri v2</span><span>Svelte 5</span><span>Chart.js</span><span>SQLite · local-first</span><span>MIT</span></div>
+    <div class="badges"><span>v0.1.7</span><span>Rust</span><span>Tauri v2</span><span>Svelte 5</span><span>Chart.js</span><span>SQLite · local-first</span><span>MIT</span></div>
     <figure class="hero-shot rv" style="margin-left:0;margin-right:0">
       <img src="assets/app-overview.png" alt="Kairos benchmark overview grid with rank chips">
-      <figcaption>Live capture — the benchmark grid with rank chips, favorites, and sync status.</figcaption>
+      <figcaption>Live capture — the benchmark grid with type filter tabs, rank chips, favorites, and sync status.</figcaption>
     </figure>
   </header>
 
@@ -221,17 +243,19 @@ footer .sp{margin-left:auto; font-family:var(--mono); font-size:12px}
       <div class="card rv"><div class="ico">🗂</div><h3>Full benchmark coverage</h3><p>Every benchmark tracked on <a href="https://evxl.app" target="_blank" rel="noopener">evxl.app</a> — Voltaic, Revosect, PureG, Aimerz+ and the rest — with official rank names and colors.</p></div>
       <div class="card rv"><div class="ico">🔄</div><h3>One-click sync, polite by default</h3><p>Quick pass for your mains, Deep Scan for everything. Smart sync skips benchmarks whose CSVs haven't changed; throttles get patient retries.</p></div>
       <div class="card rv"><div class="ico">📈</div><h3>Per-scenario detail</h3><p>Score-history chart (local plays + snapshots, deduplicated), 7-day average, running high, avg/high scores, 30-day improvement %. Stale non-PB syncs never pollute the charts.</p></div>
+      <div class="card rv"><div class="ico">🧭</div><h3>What to grind next</h3><p>Each benchmark page names the cheapest per-scenario scores for the next tier — probed against the local engine, so exact for every method family. Targets cap at each scenario's ladder top, so they're always achievable; when no single scenario can carry you, you get a numbered rung-by-rung plan instead.</p></div>
       <div class="card rv"><div class="ico">📌</div><h3>Search + favorites</h3><p>Filter the grid by name, pin benchmarks to the top. Pins survive restarts. Registry updater keeps new seasons coming without a rebuild.</p></div>
+      <div class="card rv"><div class="ico">🏷️</div><h3>Benchmark-type filter</h3><p>12 tabs mirroring evxl's own grouping — Tracking, Static, Clicking, Micro, Dynamic, Evasive and more. Multi-select, combined with the name search; only pure benchmarks match a style tab, everything unspecialized sits under Mixed.</p></div>
       <div class="card rv"><div class="ico">🔒</div><h3>Private by design</h3><p>No accounts, no telemetry — only public APIs. Live API tests skip unless you opt in. Auto-sync on launch with a “last synced X ago” indicator.</p></div>
     </div>
   </section>
 
   <section id="screenshots">
     <h2 class="sec">// Screenshots</h2>
-    <p class="lead">Straight from the app.<small>Click any image to zoom. All captured live from v0.1.5.</small></p>
+    <p class="lead">Straight from the app.<small>Click any image to zoom. All captured live from v0.1.7.</small></p>
     <div class="shots">
       <figure class="shot rv"><img src="assets/app-grid-scrolled.png" alt="Kairos benchmark grid showing many benchmark families" loading="lazy"><figcaption><strong>Benchmark grid</strong>Dozens of families — Astro, Avasive S1, Catburg, Dantes, Dark &amp; Rafal… with official rank colors.</figcaption></figure>
-      <figure class="shot rv"><img src="assets/app-search.png" alt="Kairos grid filtered by search for voltaic" loading="lazy"><figcaption><strong>Search + favorites</strong>Type to filter the grid by name; pins stay on top.</figcaption></figure>
+      <figure class="shot rv"><img src="assets/app-grind.png" alt="Kairos what-to-grind-next panel with per-scenario targets" loading="lazy"><figcaption><strong>What to grind next</strong>Exact per-scenario targets for the next tier, capped at each ladder top — or a combined step-by-step plan.</figcaption></figure>
       <figure class="shot rv"><img src="assets/app-detail-top.png" alt="Kairos Tracer Benchmark Hard detail on Smoothbot scenario" loading="lazy"><figcaption><strong>Scenario deep-dive</strong>Tracer Benchmark Hard on Smoothbot Pauer Close Smooth (4 entries): avg/high, 7-day average, 30-day improvement.</figcaption></figure>
       <figure class="shot rv"><img src="assets/app-detail-chart.png" alt="Kairos 7-entry score history chart with local plays" loading="lazy"><figcaption><strong>Score history</strong>Avasive S2 Easier, AngelClick Revolving — 7 runs on one chart. Magenta dots are local CSV plays, the rest sync snapshots, deduplicated.</figcaption></figure>
     </div>
@@ -278,13 +302,19 @@ cd ..\src-tauri
     <p class="lead">Shipped when done and verified. No dates.<small>Tracked in <a href="https://github.com/Digitals06/kairos/blob/main/ROADMAP.md" target="_blank" rel="noopener">ROADMAP.md</a> — open development, public but small.</small></p>
     <div class="rm-grid">
       <div class="rm now rv">
-        <h3>v0.1.5 <span class="tag">CURRENT</span></h3>
+        <h3>v0.1.7 <span class="tag">CURRENT</span></h3>
         <ul>
-          <li class="done">Same-run consolidation — one authoritative merged series</li>
-          <li class="done">Smart sync — only re-probe changed CSVs (mtime-based)</li>
-          <li class="done">Registry updater — new seasons without a rebuild</li>
-          <li class="done">Auto-sync on launch + “last synced X ago”</li>
-          <li class="done">“What to grind next” — design pass complete</li>
+          <li class="done">Grind-next reachability — targets capped at each scenario's ladder top, never game-impossible</li>
+          <li class="done">Combined step-by-step plans for floor/harmonic benchmarks, rung by rung</li>
+          <li class="done">Honest no-path states + each scenario listed once</li>
+        </ul>
+      </div>
+      <div class="rm shipped rv">
+        <h3>v0.1.6 <span class="tag">SHIPPED</span></h3>
+        <ul>
+          <li class="done">12-tab benchmark-type filter from evxl's own taxonomy, multi-select + search</li>
+          <li class="done">“What to grind next” panel — probe-based per-scenario targets</li>
+          <li class="done">Same-run consolidation, smart sync, registry updater, auto-sync (v0.1.5)</li>
         </ul>
       </div>
       <div class="rm next rv">
