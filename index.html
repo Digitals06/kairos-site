@@ -16,7 +16,7 @@
 <meta name="twitter:description" content="Track every KovaaK's benchmark, watch ranks climb, get exact per-scenario targets for the next tier. Local-first — no login.">
 <meta name="twitter:image" content="https://digitals06.github.io/kairos-site/assets/app-overview.png">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Kairos","applicationCategory":"GameApplication","operatingSystem":"Windows 10/11","softwareVersion":"0.1.7","license":"https://opensource.org/licenses/MIT","author":{"@type":"Person","name":"Digitals06"},"downloadUrl":"https://github.com/Digitals06/kairos/releases","offers":{"@type":"Offer","price":"0"},"description":"Desktop companion for KovaaK's FPS Aim Trainer: benchmark tracking, locally-computed ranks, per-scenario targets for the next tier."}
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Kairos","applicationCategory":"GameApplication","operatingSystem":"Windows 10/11","softwareVersion":"0.1.8","license":"https://opensource.org/licenses/MIT","author":{"@type":"Person","name":"Digitals06"},"downloadUrl":"https://github.com/Digitals06/kairos/releases","offers":{"@type":"Offer","price":"0"},"description":"Desktop companion for KovaaK's FPS Aim Trainer: benchmark tracking, locally-computed ranks, per-scenario targets for the next tier."}
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -258,7 +258,7 @@ footer .sp{margin-left:auto; font-family:var(--mono); font-size:12px}
       <a class="btn btn-accent" href="https://github.com/Digitals06/kairos/releases" target="_blank" rel="noopener">⬇ Download kairos.exe</a>
       <a class="btn" href="https://github.com/Digitals06/kairos" target="_blank" rel="noopener">View source on GitHub</a>
     </div>
-    <div class="badges"><span id="rel-ver" title="Latest GitHub release">v0.1.7</span><span id="rel-dl" title="kairos.exe downloads">⬇ 1</span><span>Rust</span><span>Tauri v2</span><span>Svelte 5</span><span>Chart.js</span><span>SQLite · local-first</span><span>MIT</span></div>
+    <div class="badges"><span id="rel-ver" title="Latest GitHub release">v0.1.8</span><span id="rel-dl" title="kairos.exe downloads">⬇ 1</span><span>Rust</span><span>Tauri v2</span><span>Svelte 5</span><span>Chart.js</span><span>SQLite · local-first</span><span>MIT</span></div>
     <figure class="hero-shot rv" style="margin-left:0;margin-right:0">
       <picture><source srcset="assets/app-overview.webp" type="image/webp"><img src="assets/app-overview.png" alt="Kairos benchmark overview grid with rank chips"></picture>
       <figcaption>Live capture — the benchmark grid with type filter tabs, rank chips, favorites, and sync status.<span class="shot-ver">captured from v0.1.7 · Sep 2026</span></figcaption>
@@ -267,15 +267,15 @@ footer .sp{margin-left:auto; font-family:var(--mono); font-size:12px}
 
   <section id="features">
     <h2 class="sec">// Features</h2>
-    <p class="lead">Everything the grind needs, nothing it doesn't.<small>All ranks recomputed locally by Kairos' own engine — the server's stored rank is only a fallback.</small></p>
+    <p class="lead">Everything the grind needs, nothing it doesn't.<small>Every benchmark computes its rank from local data — 100% client-side, no server fallback.</small></p>
     <div class="stats rv">
-      <div class="stat"><b><em>~97%</em></b><span>client-side rank coverage</span></div>
+      <div class="stat"><b>100%</b><span>client-side rank coverage</span></div>
       <div class="stat"><b>ALL</b><span>evxl benchmark families</span></div>
       <div class="stat"><b class="num">0</b><span>accounts · logins · telemetry</span></div>
       <div class="stat"><b>1 <em>file</em></b><span>your whole database</span></div>
     </div>
     <div class="grid" style="margin-top:14px">
-      <div class="card rv"><div class="ico">🎯</div><h3>evxl-accurate ranks, computed locally</h3><p>Reverse-engineered from evxl.app: Voltaic energy, harmonic / top-N / count-based methods and more. Verified against live benchmarks.</p></div>
+      <div class="card rv"><div class="ico">🎯</div><h3>evxl-accurate ranks, computed locally</h3><p>Reverse-engineered from evxl.app: Voltaic energy, harmonic / top-N / count-based methods and more — every family computes from your scores. No server fallback remains.</p></div>
       <div class="card rv"><div class="ico">🔔</div><h3>Rank-change toasts</h3><p>Every sync diffs your two newest snapshots per benchmark. Rank moves? A <code>RANK UP</code> toast with old → new tier, or one summary when several shift.</p></div>
       <div class="card rv"><div class="ico">⚡</div><h3>Live local plays</h3><p>A background watcher reads KovaaK's <code>Stats</code> folder while the app is open — new sessions land in your charts on their own. No refresh click.</p></div>
       <div class="card rv"><div class="ico">🗂</div><h3>Full benchmark coverage</h3><p>Every benchmark tracked on <a href="https://evxl.app" target="_blank" rel="noopener">evxl.app</a> — Voltaic, Revosect, PureG, Aimerz+ and the rest — with official rank names and colors.</p></div>
@@ -285,6 +285,7 @@ footer .sp{margin-left:auto; font-family:var(--mono); font-size:12px}
       <div class="card rv"><div class="ico">📌</div><h3>Search + favorites</h3><p>Filter the grid by name, pin benchmarks to the top. Pins survive restarts. Registry updater keeps new seasons coming without a rebuild.</p></div>
       <div class="card rv"><div class="ico">🏷️</div><h3>Benchmark-type filter</h3><p>12 tabs mirroring evxl's own grouping — Tracking, Static, Clicking, Micro, Dynamic, Evasive and more. Multi-select, combined with the name search; only pure benchmarks match a style tab, everything unspecialized sits under Mixed.</p></div>
       <div class="card rv"><div class="ico">🔒</div><h3>Private by design</h3><p>No accounts, no telemetry — only public APIs. Live API tests skip unless you opt in. Auto-sync on launch with a “last synced X ago” indicator.</p></div>
+      <div class="card rv"><div class="ico">💾</div><h3>One-click backup</h3><p>The settings menu exports your entire history as a single JSON file in Documents. Your grind, portable.</p></div>
     </div>
   </section>
 
@@ -357,19 +358,18 @@ cd ..\src-tauri
     <p class="lead">Shipped when done and verified. No dates.<small>Tracked in <a href="https://github.com/Digitals06/kairos/blob/main/ROADMAP.md" target="_blank" rel="noopener">ROADMAP.md</a> — open development, public but small.</small></p>
     <div class="rm-grid">
       <div class="rm now rv">
-        <h3>v0.1.7 <span class="tag">CURRENT</span></h3>
+        <h3>v0.1.8 <span class="tag">CURRENT</span></h3>
         <ul>
-          <li class="done">Grind-next reachability — targets capped at each scenario's ladder top, never game-impossible</li>
-          <li class="done">Combined step-by-step plans for floor/harmonic benchmarks, rung by rung</li>
-          <li class="done">Honest no-path states + each scenario listed once</li>
+          <li class="done">100% client-side rank coverage — the last API-rank fallback is closed</li>
+          <li class="done">One-click full backup export (JSON, straight to Documents)</li>
         </ul>
       </div>
       <div class="rm shipped rv">
-        <h3>v0.1.6 <span class="tag">SHIPPED</span></h3>
+        <h3>v0.1.6 – v0.1.7 <span class="tag">SHIPPED</span></h3>
         <ul>
-          <li class="done">12-tab benchmark-type filter from evxl's own taxonomy, multi-select + search</li>
-          <li class="done">“What to grind next” panel — probe-based per-scenario targets</li>
-          <li class="done">Same-run consolidation, smart sync, registry updater, auto-sync (v0.1.5)</li>
+          <li class="done">12-tab evxl filter + “what to grind next” panel (v0.1.6)</li>
+          <li class="done">Ladder-top capping + combined rung-by-rung plans (v0.1.7)</li>
+          <li class="done">Smart sync, registry updater, auto-sync (v0.1.5)</li>
         </ul>
       </div>
       <div class="rm next rv">
@@ -378,8 +378,8 @@ cd ..\src-tauri
           <li>Benchmark dashboard — rank chips + progress-to-next bars</li>
           <li>Weekly report — time trained, trends, rank changes</li>
           <li>Windows installer (NSIS via Tauri bundler)</li>
-          <li>100% client-side rank coverage</li>
-          <li>History export (JSON/CSV) + streaks / XP meta-progression</li>
+          <li>CSV history export (JSON one-click backup already shipped)</li>
+          <li>Streaks / XP meta-progression from consistency and milestones</li>
         </ul>
       </div>
       <div class="rm rv">
