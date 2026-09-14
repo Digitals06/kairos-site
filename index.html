@@ -16,7 +16,7 @@
 <meta name="twitter:description" content="Track every KovaaK's benchmark, watch ranks climb, get exact per-scenario targets for the next tier. Local-first — no login.">
 <meta name="twitter:image" content="https://digitals06.github.io/kairos-site/assets/app-overview.png">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Kairos","applicationCategory":"GameApplication","operatingSystem":"Windows 10/11","softwareVersion":"0.1.8","license":"https://opensource.org/licenses/MIT","author":{"@type":"Person","name":"Digitals06"},"downloadUrl":"https://github.com/Digitals06/kairos/releases","offers":{"@type":"Offer","price":"0"},"description":"Desktop companion for KovaaK's FPS Aim Trainer: benchmark tracking, locally-computed ranks, per-scenario targets for the next tier."}
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Kairos","applicationCategory":"GameApplication","operatingSystem":"Windows 10/11","softwareVersion":"0.2.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Person","name":"Digitals06"},"downloadUrl":"https://github.com/Digitals06/kairos/releases","offers":{"@type":"Offer","price":"0"},"description":"Desktop companion for KovaaK's FPS Aim Trainer: benchmark tracking, locally-computed ranks, per-scenario targets for the next tier."}
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -127,6 +127,7 @@ p.lead small{display:block; font-size:14px; font-weight:400; color:var(--muted);
 
 /* screenshots */
 .shots{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+.shots figure.wide{grid-column:1 / -1}
 @media(max-width:760px){.shots{grid-template-columns:1fr}}
 figure.shot{margin:0; background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden}
 figure.shot img{display:block; width:100%; height:auto; cursor:zoom-in}
@@ -253,15 +254,15 @@ footer .sp{margin-left:auto; font-family:var(--mono); font-size:12px}
   <header class="hero">
     <span class="kicker">KOVAAK'S FPS AIM TRAINER · DESKTOP COMPANION</span>
     <h1 class="mega">KAIROS</h1>
-    <p class="sub"><strong>Track every benchmark. Watch ranks climb.</strong><br>Per-scenario improvement over time — in a neon-soaked native app. No login, no accounts. Your data stays in a local file on your PC.</p>
+    <p class="sub"><strong>Track every benchmark. Watch ranks climb.</strong><br>Weekly progress, XP levels, and exact per-scenario targets — in a neon-soaked native app. No login, no accounts. Your data stays in a local file on your PC.</p>
     <div class="cta-row">
       <a class="btn btn-accent" href="https://github.com/Digitals06/kairos/releases" target="_blank" rel="noopener">⬇ Download kairos.exe</a>
       <a class="btn" href="https://github.com/Digitals06/kairos" target="_blank" rel="noopener">View source on GitHub</a>
     </div>
-    <div class="badges"><span id="rel-ver" title="Latest GitHub release">v0.1.8</span><span id="rel-dl" title="kairos.exe downloads">⬇ 1</span><span>Rust</span><span>Tauri v2</span><span>Svelte 5</span><span>Chart.js</span><span>SQLite · local-first</span><span>MIT</span></div>
+    <div class="badges"><span id="rel-ver" title="Latest GitHub release">v0.2.0</span><span id="rel-dl" title="kairos.exe downloads">⬇ 1</span><span>Rust</span><span>Tauri v2</span><span>Svelte 5</span><span>Chart.js</span><span>SQLite · local-first</span><span>MIT</span></div>
     <figure class="hero-shot rv" style="margin-left:0;margin-right:0">
       <picture><source srcset="assets/app-overview.webp" type="image/webp"><img src="assets/app-overview.png" alt="Kairos benchmark overview grid with rank chips"></picture>
-      <figcaption>Live capture — the benchmark grid with type filter tabs, rank chips, favorites, and sync status.<span class="shot-ver">captured from v0.1.7 · Sep 2026</span></figcaption>
+      <figcaption>Live capture — the weekly strip up top, family cards with rank badges, and type filter tabs.<span class="shot-ver">captured from v0.2.0 · Sep 2026</span></figcaption>
     </figure>
   </header>
 
@@ -278,25 +279,30 @@ footer .sp{margin-left:auto; font-family:var(--mono); font-size:12px}
       <div class="card rv"><div class="ico">🎯</div><h3>evxl-accurate ranks, computed locally</h3><p>Reverse-engineered from evxl.app: Voltaic energy, harmonic / top-N / count-based methods and more — every family computes from your scores. No server fallback remains.</p></div>
       <div class="card rv"><div class="ico">🔔</div><h3>Rank-change toasts</h3><p>Every sync diffs your two newest snapshots per benchmark. Rank moves? A <code>RANK UP</code> toast with old → new tier, or one summary when several shift.</p></div>
       <div class="card rv"><div class="ico">⚡</div><h3>Live local plays</h3><p>A background watcher reads KovaaK's <code>Stats</code> folder while the app is open — new sessions land in your charts on their own. No refresh click.</p></div>
+      <div class="card rv"><div class="ico">📅</div><h3>Weekly report + XP levels</h3><p>Plays, days trained, current streak, and an XP level with its progress bar — plus this week's benchmark rank changes, right at the top of the app.</p></div>
       <div class="card rv"><div class="ico">🗂</div><h3>Full benchmark coverage</h3><p>Every benchmark tracked on <a href="https://evxl.app" target="_blank" rel="noopener">evxl.app</a> — Voltaic, Revosect, PureG, Aimerz+ and the rest — with official rank names and colors.</p></div>
+      <div class="card rv"><div class="ico">🧩</div><h3>One card per family</h3><p>The overview groups benchmarks by family: best rank badge, difficulty count, and unroll to see every difficulty with its tier-ladder rungs lit up to your rank.</p></div>
       <div class="card rv"><div class="ico">🔄</div><h3>One-click sync, polite by default</h3><p>Quick pass for your mains, Deep Scan for everything. Smart sync skips benchmarks whose CSVs haven't changed; throttles get patient retries.</p></div>
-      <div class="card rv"><div class="ico">📈</div><h3>Per-scenario detail</h3><p>Score-history chart (local plays + snapshots, deduplicated), 7-day average, running high, avg/high scores, 30-day improvement %. Stale non-PB syncs never pollute the charts.</p></div>
+      <div class="card rv"><div class="ico">📈</div><h3>Per-scenario detail</h3><p>Score-history chart with PB progression lines (local plays + snapshots, deduplicated), 7-day average, running high, avg/high scores, 30-day improvement %.</p></div>
+      <div class="card rv"><div class="ico">🧪</div><h3>Consistency &amp; plateau detection</h3><p>Chips on every scenario: progressing or plateaued, PB count, days since your last PB, and CV — the spread of your recent plays. Swap a stalled grind for one that's still climbing.</p></div>
       <div class="card rv"><div class="ico">🧭</div><h3>What to grind next</h3><p>Each benchmark page names the cheapest per-scenario scores for the next tier — probed against the local engine, so exact for every method family. Targets cap at each scenario's ladder top, so they're always achievable; when no single scenario can carry you, you get a numbered rung-by-rung plan instead.</p></div>
       <div class="card rv"><div class="ico">📌</div><h3>Search + favorites</h3><p>Filter the grid by name, pin benchmarks to the top. Pins survive restarts. Registry updater keeps new seasons coming without a rebuild.</p></div>
       <div class="card rv"><div class="ico">🏷️</div><h3>Benchmark-type filter</h3><p>12 tabs mirroring evxl's own grouping — Tracking, Static, Clicking, Micro, Dynamic, Evasive and more. Multi-select, combined with the name search; only pure benchmarks match a style tab, everything unspecialized sits under Mixed.</p></div>
       <div class="card rv"><div class="ico">🔒</div><h3>Private by design</h3><p>No accounts, no telemetry — only public APIs. Live API tests skip unless you opt in. Auto-sync on launch with a “last synced X ago” indicator.</p></div>
-      <div class="card rv"><div class="ico">💾</div><h3>One-click backup</h3><p>The settings menu exports your entire history as a single JSON file in Documents. Your grind, portable.</p></div>
+      <div class="card rv"><div class="ico">💾</div><h3>One-click backup</h3><p>The settings menu exports your entire history — a full JSON backup plus a CSV series of your scores — straight to your Documents folder.</p></div>
     </div>
   </section>
 
   <section id="screenshots">
     <h2 class="sec">// Screenshots</h2>
-    <p class="lead">Straight from the app.<small>Click any image to zoom. All captured live from v0.1.7.</small></p>
+    <p class="lead">Straight from the app.<small>Click any image to zoom. All captured live from v0.2.0.</small></p>
     <div class="shots">
-      <figure class="shot rv"><picture><source srcset="assets/app-grid-scrolled.webp" type="image/webp"><img src="assets/app-grid-scrolled.png" alt="Kairos benchmark grid showing many benchmark families" loading="lazy"></picture><figcaption><strong>Benchmark grid</strong>Dozens of families — Astro, Avasive S1, Catburg, Dantes, Dark &amp; Rafal… with official rank colors.<span class="shot-ver">captured from v0.1.7 · Sep 2026</span></figcaption></figure>
-      <figure class="shot rv"><picture><source srcset="assets/app-grind.webp" type="image/webp"><img src="assets/app-grind.png" alt="Kairos what-to-grind-next panel with per-scenario targets" loading="lazy"></picture><figcaption><strong>What to grind next</strong>Exact per-scenario targets for the next tier, capped at each ladder top — or a combined step-by-step plan.<span class="shot-ver">captured from v0.1.7 · Sep 2026</span></figcaption></figure>
-      <figure class="shot rv"><picture><source srcset="assets/app-detail-top.webp" type="image/webp"><img src="assets/app-detail-top.png" alt="Kairos Tracer Benchmark Hard detail on Smoothbot scenario" loading="lazy"></picture><figcaption><strong>Scenario deep-dive</strong>Tracer Benchmark Hard on Smoothbot Pauer Close Smooth (4 entries): avg/high, 7-day average, 30-day improvement.<span class="shot-ver">captured from v0.1.7 · Sep 2026</span></figcaption></figure>
-      <figure class="shot rv"><picture><source srcset="assets/app-detail-chart.webp" type="image/webp"><img src="assets/app-detail-chart.png" alt="Kairos 7-entry score history chart with local plays" loading="lazy"></picture><figcaption><strong>Score history</strong>Avasive S2 Easier, AngelClick Revolving — 7 runs on one chart. Magenta dots are local CSV plays, the rest sync snapshots, deduplicated.<span class="shot-ver">captured from v0.1.7 · Sep 2026</span></figcaption></figure>
+      <figure class="shot rv"><picture><source srcset="assets/app-grid-scrolled.webp" type="image/webp"><img src="assets/app-grid-scrolled.png" alt="Kairos family benchmark grid" loading="lazy"></picture><figcaption><strong>Benchmark grid</strong>One card per family — Aimerz+, AimSpeed, Amare's Quest, Angelic, Anima Micro… each with its best rank badge.<span class="shot-ver">captured from v0.2.0 · Sep 2026</span></figcaption></figure>
+      <figure class="shot rv"><picture><source srcset="assets/app-family-unroll.webp" type="image/webp"><img src="assets/app-family-unroll.png" alt="Kairos family card expanded showing difficulty rung bars" loading="lazy"></picture><figcaption><strong>Family unroll</strong>Voltaic S5 expanded: every difficulty with its tier-ladder rungs, lit up to your rank.<span class="shot-ver">captured from v0.2.0 · Sep 2026</span></figcaption></figure>
+      <figure class="shot wide rv"><picture><source srcset="assets/app-weekly.webp" type="image/webp"><img src="assets/app-weekly.png" alt="Kairos weekly report strip with plays, streak, XP level and rank changes" loading="lazy"></picture><figcaption><strong>Weekly report + XP</strong>Plays, days trained, streak, and an XP level with progress bar — plus this week's rank changes, up top.<span class="shot-ver">captured from v0.2.0 · Sep 2026</span></figcaption></figure>
+      <figure class="shot wide rv"><picture><source srcset="assets/app-detail-top.webp" type="image/webp"><img src="assets/app-detail-top.png" alt="Kairos Avasive S2 Easier detail header and stats" loading="lazy"></picture><figcaption><strong>Scenario deep-dive</strong>Avasive S2 Easier — rank, avg/high scores, 7-day average, and 30-day improvement %.<span class="shot-ver">captured from v0.2.0 · Sep 2026</span></figcaption></figure>
+      <figure class="shot wide rv"><picture><source srcset="assets/app-detail-chart.webp" type="image/webp"><img src="assets/app-detail-chart.png" alt="Kairos score history chart with PB progression and consistency chips" loading="lazy"></picture><figcaption><strong>Score history + consistency</strong>8 runs on AngelClick Revolving with PB progression, and chips: progressing, 8 PBs, days since PB, CV %.<span class="shot-ver">captured from v0.2.0 · Sep 2026</span></figcaption></figure>
+      <figure class="shot wide rv"><picture><source srcset="assets/app-grind.webp" type="image/webp"><img src="assets/app-grind.png" alt="Kairos what-to-grind-next panel with per-scenario targets and CV" loading="lazy"></picture><figcaption><strong>What to grind next</strong>Tracer Benchmark Hard — the exact scores that flip Diamond → Master, each with its target's CV.<span class="shot-ver">captured from v0.2.0 · Sep 2026</span></figcaption></figure>
     </div>
   </section>
 
@@ -321,6 +327,7 @@ footer .sp{margin-left:auto; font-family:var(--mono); font-size:12px}
           <tr><td>Next-tier targets</td><td class="yes">Exact, per scenario</td><td class="mid">Ranks only</td><td class="mid">Hand-computed</td></tr>
           <tr><td>Rank source</td><td class="yes">Recomputed locally</td><td class="mid">Server rank (often stale)</td><td class="mid">Manual lookup</td></tr>
           <tr><td>Local plays</td><td class="yes">Automatic CSV watcher</td><td class="mid">Not tracked</td><td class="mid">Manual entry</td></tr>
+          <tr><td>Weekly report + XP</td><td class="yes">Streak, levels, rank moves</td><td class="mid">No</td><td class="mid">Manual</td></tr>
           <tr><td>Login needed</td><td class="yes">None</td><td class="yes">None</td><td class="mid">Google account</td></tr>
           <tr><td>Works offline</td><td class="yes">Yes, local DB</td><td class="mid">No</td><td class="yes">Yes</td></tr>
         </tbody>
@@ -358,35 +365,45 @@ cd ..\src-tauri
     <p class="lead">Shipped when done and verified. No dates.<small>Tracked in <a href="https://github.com/Digitals06/kairos/blob/main/ROADMAP.md" target="_blank" rel="noopener">ROADMAP.md</a> — open development, public but small.</small></p>
     <div class="rm-grid">
       <div class="rm now rv">
-        <h3>v0.1.8 <span class="tag">CURRENT</span></h3>
+        <h3>v0.2.0 <span class="tag">CURRENT</span></h3>
         <ul>
-          <li class="done">100% client-side rank coverage — the last API-rank fallback is closed</li>
-          <li class="done">One-click full backup export (JSON, straight to Documents)</li>
-        </ul>
-      </div>
-      <div class="rm shipped rv">
-        <h3>v0.1.6 – v0.1.7 <span class="tag">SHIPPED</span></h3>
-        <ul>
-          <li class="done">12-tab evxl filter + “what to grind next” panel (v0.1.6)</li>
-          <li class="done">Ladder-top capping + combined rung-by-rung plans (v0.1.7)</li>
-          <li class="done">Smart sync, registry updater, auto-sync (v0.1.5)</li>
+          <li class="done">Family overview: one card per benchmark family with tier-ladder rung bars</li>
+          <li class="done">Weekly report — plays, days, PBs, streak + XP level, rank changes</li>
+          <li class="done">Streaks + XP meta-progression; CSV export alongside the JSON backup</li>
+          <li class="done">Deep pages: PB progression + plateau detection per scenario</li>
+          <li class="done">Rank coverage audit — zero API-fallback families</li>
         </ul>
       </div>
       <div class="rm next rv">
-        <h3>v0.2 <span class="tag">NEXT</span></h3>
+        <h3>v0.2.1 <span class="tag">NEXT</span></h3>
         <ul>
-          <li>Benchmark dashboard — rank chips + progress-to-next bars</li>
-          <li>Weekly report — time trained, trends, rank changes</li>
-          <li>Windows installer (NSIS via Tauri bundler)</li>
-          <li>CSV history export (JSON one-click backup already shipped)</li>
-          <li>Streaks / XP meta-progression from consistency and milestones</li>
+          <li>Grind chips on overview cards — runs to next tier, plateaued badges</li>
+          <li>Time-trained estimate in the weekly strip</li>
+        </ul>
+      </div>
+      <div class="rm next rv">
+        <h3>v0.3.0 <span class="tag">NEXT</span></h3>
+        <ul>
+          <li>Tray mode + optional auto-launch</li>
+          <li>Reconcile view — API vs local CSV discrepancy report</li>
+          <li>Grind session coach — next 3 scenarios while you play</li>
+          <li>Discord share card (PNG) · opt-in global leaderboards</li>
+        </ul>
+      </div>
+      <div class="rm shipped rv">
+        <h3>v0.1.5 – v0.1.9 <span class="tag">SHIPPED</span></h3>
+        <ul>
+          <li class="done">Smart sync, registry updater, auto-sync (v0.1.5)</li>
+          <li class="done">12-tab evxl filter + grind-next panel (v0.1.6)</li>
+          <li class="done">Ladder-top capping + combined plans (v0.1.7)</li>
+          <li class="done">Full local rank coverage + JSON backup (v0.1.8)</li>
+          <li class="done">Consistency &amp; plateau detection (v0.1.9)</li>
         </ul>
       </div>
       <div class="rm rv">
         <h3>LATER <span class="tag" style="border-color:var(--border);color:var(--muted)">UNPROMISED</span></h3>
         <ul>
-          <li>Tray mode · auto-launch when KovaaK's starts</li>
-          <li>Reconcile view — API vs local CSV discrepancy report</li>
+          <li>Windows installer (NSIS via Tauri bundler)</li>
         </ul>
       </div>
     </div>
