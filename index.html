@@ -259,7 +259,7 @@ footer .sp{margin-left:auto; font-family:var(--mono); font-size:12px}
       <a class="btn btn-accent" href="https://github.com/Digitals06/kairos/releases" target="_blank" rel="noopener">⬇ Download kairos.exe</a>
       <a class="btn" href="https://github.com/Digitals06/kairos" target="_blank" rel="noopener">View source on GitHub</a>
     </div>
-    <div class="badges"><span id="rel-ver" title="Latest GitHub release">v0.2.0</span><span id="rel-dl" title="total kairos.exe downloads, all releases">⬇ 89</span><span>Rust</span><span>Tauri v2</span><span>Svelte 5</span><span>Chart.js</span><span>SQLite · local-first</span><span>MIT</span></div>
+    <div class="badges"><span id="rel-ver" title="Latest GitHub release">v0.2.0</span><span id="rel-dl" title="total kairos.exe downloads, all releases">⬇ 107</span><span>Rust</span><span>Tauri v2</span><span>Svelte 5</span><span>Chart.js</span><span>SQLite · local-first</span><span>MIT</span></div>
     <figure class="hero-shot rv" style="margin-left:0;margin-right:0">
       <picture><source srcset="assets/app-overview-v020.webp" type="image/webp"><img src="assets/app-overview-v020.png" alt="Kairos overview with the weekly strip and benchmark family cards"></picture>
       <figcaption>Live capture — the weekly strip up top, family cards with rank badges, and type filter tabs.<span class="shot-ver">captured from v0.2.0 · Sep 2026</span></figcaption>
@@ -451,7 +451,11 @@ addEventListener('keydown', (e) => {
 });
 
 // Live release badges: version = newest stable release; download count =
-// TOTAL across ALL releases (static fallback above stays if the API fails)
+// TOTAL across ALL releases (static fallback above stays if the API fails).
+// HISTORY_DOWNLOADS compensates for replaced assets: GitHub resets an
+// asset's counter when its file is swapped, so the downloads already earned
+// by the pre-fix v0.2.0 build (89) are added back as a constant.
+const HISTORY_DOWNLOADS = 89;
 (async () => {
   try {
     const c = new AbortController();
@@ -471,7 +475,7 @@ addEventListener('keydown', (e) => {
           .reduce((s, a) => s + (a.download_count || 0), 0),
       0,
     );
-    document.getElementById('rel-dl').textContent = '⬇ ' + total;
+    document.getElementById('rel-dl').textContent = '⬇ ' + (total + HISTORY_DOWNLOADS);
   } catch { /* keep static fallback */ }
 })();
 </script>
