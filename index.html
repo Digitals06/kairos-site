@@ -1,223 +1,369 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="basalt">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kairos — KovaaK's Benchmark Companion</title>
-<meta name="description" content="Kairos tracks every KovaaK's benchmark, watches ranks climb, and shows per-scenario improvement — in a neon-soaked native app. No login, no accounts, local-first.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230a0e14'/%3E%3Ctext x='32' y='44' font-family='Arial Black' font-size='36' font-weight='900' text-anchor='middle' fill='%23ff2e88'%3EK%3C/text%3E%3C/svg%3E">
+<title>Kairos — ΚΑΙΡΟΣ · KovaaK's benchmark companion</title>
+<meta name="description" content="Track every KovaaK's benchmark, watch ranks climb, and see where to grind next — carved into marble and basalt. A local-first desktop companion: no login, no accounts, your data stays in one file.">
+<meta name="theme-color" id="theme-color" content="#141210">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23141210'/%3E%3Crect x='2.5' y='2.5' width='59' height='59' fill='none' stroke='%23d4a857' stroke-width='2'/%3E%3Ctext x='32' y='46' font-family='Georgia, serif' font-size='40' font-weight='700' text-anchor='middle' fill='%23d4a857'%3EK%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Kairos — KovaaK's Benchmark Companion">
-<meta property="og:description" content="Track every KovaaK's benchmark, watch ranks climb, get exact per-scenario targets for the next tier. Local-first native app — no login, no accounts.">
+<meta property="og:title" content="Kairos — ΚΑΙΡΟΣ · KovaaK's benchmark companion">
+<meta property="og:description" content="Marble &amp; basalt themes, locally-computed ranks, exact per-scenario targets, a weekly plaque and a grind coach. Local-first desktop companion for KovaaK's — no login, no accounts.">
 <meta property="og:url" content="https://digitals06.github.io/kairos-site/">
-<meta property="og:image" content="https://digitals06.github.io/kairos-site/assets/app-overview-v021.png">
+<meta property="og:image" content="https://digitals06.github.io/kairos-site/assets/app-overview-basalt-v030.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Kairos — KovaaK's Benchmark Companion">
-<meta name="twitter:description" content="Track every KovaaK's benchmark, watch ranks climb, get exact per-scenario targets for the next tier. Local-first — no login.">
-<meta name="twitter:image" content="https://digitals06.github.io/kairos-site/assets/app-overview-v021.png">
+<meta name="twitter:title" content="Kairos — ΚΑΙΡΟΣ · KovaaK's benchmark companion">
+<meta name="twitter:description" content="Benchmark tracking carved into marble and basalt. Ranks computed locally, per-scenario targets, weekly plaque. No login.">
+<meta name="twitter:image" content="https://digitals06.github.io/kairos-site/assets/app-overview-basalt-v030.png">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Kairos","applicationCategory":"GameApplication","operatingSystem":"Windows 10/11","softwareVersion":"0.2.1","license":"https://opensource.org/licenses/MIT","author":{"@type":"Person","name":"Digitals06"},"downloadUrl":"https://github.com/Digitals06/kairos/releases","offers":{"@type":"Offer","price":"0"},"description":"Desktop companion for KovaaK's FPS Aim Trainer: benchmark tracking, locally-computed ranks, per-scenario targets for the next tier."}
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Kairos","applicationCategory":"GameApplication","operatingSystem":"Windows 10/11","softwareVersion":"0.3.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Person","name":"Digitals06"},"downloadUrl":"https://github.com/Digitals06/kairos/releases","offers":{"@type":"Offer","price":"0"},"description":"A desktop companion for KovaaK's FPS Aim Trainer, carved into marble and basalt: benchmark tracking, locally-computed ranks, per-scenario targets for the next tier, a weekly plaque and a grind coach."}
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script>
+/* Theme first — follows the OS unless the reader has chosen. */
+(function () {
+  try {
+    var saved = localStorage.getItem('kairos-theme');
+    var sys = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'basalt' : 'marble';
+    document.documentElement.dataset.theme = saved === 'marble' || saved === 'basalt' ? saved : sys;
+  } catch (e) {}
+})();
+</script>
 <style>
+/* ===========================================================================
+   Kairos — the temple gate. Marble & basalt, engraved plates, meander rules.
+   Tokens mirror the app's theme.css — one identity, two materials.
+   =========================================================================== */
+@font-face{font-family:'Cinzel';src:url('assets/fonts/cinzel-400.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Cinzel';src:url('assets/fonts/cinzel-700.ttf') format('truetype');font-weight:700;font-display:swap}
+@font-face{font-family:'Cinzel';src:url('assets/fonts/cinzel-900.ttf') format('truetype');font-weight:900;font-display:swap}
+@font-face{font-family:'Garamond';src:url('assets/fonts/ebgaramond-400.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Garamond';src:url('assets/fonts/ebgaramond-600.ttf') format('truetype');font-weight:600;font-display:swap}
+@font-face{font-family:'Garamond';src:url('assets/fonts/ebgaramond-italic.ttf') format('truetype');font-style:italic;font-display:swap}
+@font-face{font-family:'JBMono';src:url('assets/fonts/JetBrainsMono-Regular.ttf') format('truetype');font-display:swap}
+@font-face{font-family:'JBMono';src:url('assets/fonts/JetBrainsMono-SemiBold.ttf') format('truetype');font-weight:600;font-display:swap}
+
 :root{
-  --bg:#0a0e14; --panel:#111827; --panel-raised:#161f31;
-  --accent:#ff2e88; --accent-2:#00e5ff; --success:#10b981; --warn:#f59e0b;
-  --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937;
-  --glow-magenta:0 0 10px rgba(255,46,136,.45),0 0 28px rgba(255,46,136,.18);
-  --glow-cyan:0 0 10px rgba(0,229,255,.4),0 0 28px rgba(0,229,255,.15);
-  --radius:12px;
-  --sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
-  --display:'Orbitron',var(--sans);
-  --mono:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;
+  --font-display:'Cinzel',Georgia,serif;
+  --font-serif:'Garamond',Georgia,'Times New Roman',serif;
+  --mono:'JBMono',ui-monospace,Consolas,monospace;
+  --radius:.25rem; --radius-lg:.5rem;
+  --dur-fast:125ms; --dur-med:300ms; --dur-slow:700ms;
+  --ease-out-soft:cubic-bezier(.25,0,.3,1);
+  --wrap:1120px;
 }
+/* ── MARBLE — sunlit agora ── */
+html[data-theme='marble']{
+  --bg:#efe9dc; --chrome:#ddd4c2; --panel:#f8f4ea; --panel-raised:#fdfbf5; --panel-sunken:#e7dfcf;
+  --text:#2a241d; --muted:#6b6151; --faint:#6f6350; --border:#cbbfa6; --border-strong:#a3997a;
+  --accent:#b7412f; --accent-2:#b8892f; --success:#5c6b46; --danger:#8e3122; --aegean:#35617a;
+  --hair-shadow:0 1px 0 rgba(255,252,244,.8) inset;
+  --glow-accent-2:0 0 0 3px color-mix(in srgb,var(--accent) 14%,transparent);
+  --tablet-shadow:0 1px 0 rgba(255,252,244,.8) inset,0 14px 30px -18px rgba(42,36,29,.55);
+  --scrim:rgba(42,36,29,.9);
+}
+/* ── BASALT — night temple, torchlight gold ── */
+html[data-theme='basalt']{
+  --bg:#141210; --chrome:#0e0c0a; --panel:#1c1916; --panel-raised:#242019; --panel-sunken:#100e0c;
+  --text:#e8dfd0; --muted:#b4a488; --faint:#967f63; --border:#3d3228; --border-strong:#5c4a3a;
+  --accent:#d4a857; --accent-2:#b8892f; --success:#a4b06a; --danger:#e06456; --aegean:#7aa5c0;
+  --hair-shadow:0 1px 0 rgba(255,236,200,.05) inset;
+  --glow-accent-2:0 0 0 3px color-mix(in srgb,var(--accent) 16%,transparent);
+  --tablet-shadow:0 1px 0 rgba(255,236,200,.05) inset,0 18px 40px -20px rgba(0,0,0,.9);
+  --scrim:rgba(10,8,6,.93);
+}
+html[data-theme='marble'],html[data-theme='basalt']{ --meander:linear-gradient(var(--accent),var(--accent)) 0 0/100% 2px no-repeat,repeating-linear-gradient(90deg,transparent 0 4px,color-mix(in srgb,var(--accent) 70%,transparent) 4px 6px,transparent 6px 10px,color-mix(in srgb,var(--accent) 70%,transparent) 10px 12px); }
+/* grain: marble only (paper texture) */
+html[data-theme='marble']{ --grain:url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="140" height="140"%3E%3Cfilter id="n"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="2"/%3E%3CfeColorMatrix values="0 0 0 0 0.3 0 0 0 0 0.26 0 0 0 0 0.2 0 0 0 0.05 0"/%3E%3C/filter%3E%3Crect width="140" height="140" filter="url(%23n)"/%3E%3C/svg%3E'); }
+
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;background:var(--bg)}
 body{
   margin:0; background:var(--bg); color:var(--text);
-  font-family:var(--sans); font-size:15px; line-height:1.6; overflow-x:hidden;
+  font-family:var(--font-serif); font-size:16.5px; line-height:1.55; overflow-x:hidden;
 }
-body::after{ /* CRT scanlines, same as the app */
+html[data-theme='marble'] body::after{
   content:''; position:fixed; inset:0; pointer-events:none; z-index:9999;
-  background:repeating-linear-gradient(to bottom,rgba(255,255,255,.022) 0 1px,transparent 1px 3px);
+  background-image:var(--grain,none); opacity:.35;
 }
-body::before{ /* ambient neon wash */
-  content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
-  background:
-    radial-gradient(600px 300px at 15% -5%,rgba(255,46,136,.09),transparent 60%),
-    radial-gradient(700px 340px at 85% 10%,rgba(0,229,255,.08),transparent 60%);
-}
-a{color:var(--accent-2); text-decoration:none}
+::selection{background:color-mix(in srgb,var(--accent) 28%,transparent)}
+a{color:var(--aegean); text-decoration:none}
 a:hover{text-decoration:underline}
-:focus-visible{outline:2px solid var(--accent-2); outline-offset:3px; border-radius:4px}
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:2px}
 img{max-width:100%}
-.wrap{max-width:1120px; margin:0 auto; padding:0 24px; position:relative; z-index:1}
+h1,h2,h3{margin:0; font-family:var(--font-display); font-weight:700; letter-spacing:.12em; text-transform:uppercase}
 .num{font-family:var(--mono); font-variant-numeric:tabular-nums}
+.wrap{max-width:var(--wrap); margin:0 auto; padding:0 26px}
 
-/* --- nav --- */
-nav.top{
-  position:sticky; top:0; z-index:100;
-  background:rgba(10,14,20,.88); backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--border);
-}
-nav.top .wrap{display:flex; align-items:center; gap:22px; padding-top:12px; padding-bottom:12px}
-.logo{font-family:var(--display); font-weight:800; letter-spacing:.3em; color:var(--accent); text-shadow:var(--glow-magenta); font-size:18px; white-space:nowrap}
-.logo:hover{text-decoration:none}
-nav.links{display:flex; gap:18px; margin-left:auto; font-size:13.5px}
-nav.links a{color:var(--muted); white-space:nowrap}
-nav.links a:hover{color:var(--accent-2); text-decoration:none}
+a[href*="ko-fi"]{white-space:nowrap}
+/* ── carved scrollbars ── */
+::-webkit-scrollbar{width:12px;height:12px}
+::-webkit-scrollbar-track{background:var(--panel-sunken); border-left:1px solid var(--border)}
+::-webkit-scrollbar-thumb{background:linear-gradient(90deg,var(--border-strong),var(--border)); border:1px solid var(--border-strong); border-radius:var(--radius)}
+::-webkit-scrollbar-thumb:hover{background:var(--accent-2); border-color:var(--accent-2)}
+::-webkit-scrollbar-corner{background:var(--panel-sunken)}
+
+/* ── buttons: engraved plaques ── */
 .btn{
   display:inline-flex; align-items:center; gap:8px;
-  padding:10px 20px; border:1px solid var(--border); border-radius:8px;
-  background:var(--panel-raised); color:var(--text); font-weight:600; font-size:14px;
-  transition:border-color .15s,box-shadow .15s,color .15s;
+  padding:10px 18px; border:1px solid var(--border-strong); border-radius:var(--radius);
+  background:var(--panel-raised); color:var(--text); cursor:pointer;
+  font-family:var(--font-display); font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  transition:border-color var(--dur-fast),color var(--dur-fast),box-shadow var(--dur-fast),background var(--dur-fast);
 }
-.btn:hover:not(:disabled){border-color:var(--accent-2); color:var(--accent-2); box-shadow:var(--glow-cyan); text-decoration:none}
-.btn-accent{border-color:var(--accent); color:var(--accent); background:rgba(255,46,136,.08)}
-.btn-accent:hover:not(:disabled){border-color:var(--accent); color:#fff; box-shadow:var(--glow-magenta)}
-.btn-sm{padding:7px 14px; font-size:13px}
+.btn:hover{text-decoration:none; border-color:var(--accent); color:var(--accent); box-shadow:var(--glow-accent-2)}
+.btn-accent{background:var(--accent); border-color:var(--accent); color:var(--panel-raised)}
+.btn-accent:hover{background:var(--accent-2); border-color:var(--accent-2); color:var(--panel-raised); box-shadow:none}
 
-/* --- hero --- */
-header.hero{padding:96px 0 64px; text-align:center}
+/* ── nav ── */
+nav.top{
+  position:sticky; top:0; z-index:100;
+  background:color-mix(in srgb,var(--bg) 90%,transparent); backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+}
+nav.top .wrap{display:flex; align-items:center; gap:20px; padding-top:11px; padding-bottom:11px}
+.logo{
+  font-family:var(--font-display); font-weight:900; letter-spacing:.3em; font-size:17px;
+  color:var(--accent); white-space:nowrap;
+}
+.logo:hover{text-decoration:none}
+nav.links{display:flex; gap:16px; margin-left:auto; align-items:center}
+nav.links a{
+  color:var(--muted); white-space:nowrap; text-decoration:none;
+  font-family:var(--font-display); font-size:11px; letter-spacing:.12em; text-transform:uppercase;
+  transition:color var(--dur-fast);
+}
+nav.links a:hover{color:var(--accent); text-decoration:none}
+.theme-row{display:flex; align-items:center; gap:4px; padding-left:14px; border-left:1px solid var(--border)}
+.theme-opt{
+  padding:4px 10px; font-family:var(--font-display); font-size:10px; letter-spacing:.1em; text-transform:uppercase;
+  border:1px solid var(--border); border-radius:var(--radius); color:var(--muted); background:transparent; cursor:pointer;
+  transition:border-color var(--dur-fast),color var(--dur-fast),box-shadow var(--dur-fast);
+}
+.theme-opt:hover{border-color:var(--border-strong); color:var(--text)}
+.theme-opt.active{border-color:var(--accent-2); color:var(--accent-2); box-shadow:var(--glow-accent-2)}
+
+/* ── hero / pediment ── */
+header.hero{padding:8px 0 18px; text-align:center}
+.pediment{position:relative; padding:calc(clamp(56px,10vw,112px) + 16px) 0 10px; margin-bottom:10px}
+.pediment .roof{
+  position:absolute; left:-6px; right:-6px; top:0; height:clamp(56px,10vw,112px);
+  background:linear-gradient(180deg,color-mix(in srgb,var(--border-strong) 55%,var(--panel-raised)),var(--border-strong));
+  clip-path:polygon(50% 0,100% 100%,0 100%);
+  filter:drop-shadow(0 2px 0 color-mix(in srgb,var(--text) 16%,transparent)) drop-shadow(0 3px 0 color-mix(in srgb,var(--accent) 38%,transparent));
+}
+.pediment .cornice{
+  position:absolute; left:2px; right:2px; top:clamp(56px,10vw,112px); height:3px;
+  background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--accent) 50%,var(--border-strong)) 10%,color-mix(in srgb,var(--accent) 50%,var(--border-strong)) 90%,transparent);
+}
+.pediment .gable{
+  position:relative; margin:0; font-size:clamp(32px,4.6vw,46px); font-weight:900; letter-spacing:.24em;
+  color:var(--accent);
+}
+.pediment .epigraph{margin:6px 0 10px}
+.pediment .epigraph small{font-family:var(--font-serif); font-size:14px; font-style:italic; letter-spacing:.06em; text-transform:none; color:var(--muted)}
+.pediment .meander{display:block; height:11px; width:min(560px,92%); margin:0 auto; background:var(--meander); opacity:.75}
 .kicker{
-  display:inline-block; font-family:var(--mono); font-size:12px; letter-spacing:.18em;
-  color:var(--accent-2); border:1px solid var(--border); border-radius:999px;
-  padding:5px 16px; margin-bottom:22px; background:rgba(0,229,255,.05);
+  display:inline-block; font-family:var(--mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--muted); border:1px solid var(--border); border-radius:var(--radius);
+  padding:5px 14px; margin:6px 0 22px; background:var(--panel);
 }
-h1.mega{
-  font-family:var(--display); font-weight:800; font-size:clamp(44px,8vw,84px);
-  letter-spacing:.18em; margin:0 0 8px; color:#fff;
-  text-shadow:0 0 18px rgba(255,46,136,.55),0 0 60px rgba(255,46,136,.25);
-}
-.sub{font-size:clamp(16px,2.4vw,21px); color:var(--muted); max-width:680px; margin:0 auto 10px}
-.sub strong{color:var(--text)}
-.cta-row{display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin:28px 0 18px}
-.badges{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; font-family:var(--mono); font-size:12px; color:var(--muted)}
-.badges span{border:1px solid var(--border); border-radius:6px; padding:3px 10px; background:var(--panel)}
-.hero-shot{margin-top:44px; border:1px solid var(--border); border-radius:14px; overflow:hidden; box-shadow:0 20px 80px rgba(0,0,0,.5),var(--glow-cyan)}
-.hero-shot img{display:block; width:100%; height:auto}
-.hero-shot figcaption{font-size:12.5px; color:var(--muted); padding:10px 16px; background:var(--panel); text-align:left; border-top:1px solid var(--border)}
+.sub{font-size:clamp(16.5px,2vw,20px); color:var(--muted); max-width:720px; margin:0 auto 10px}
+.sub strong{color:var(--text); font-weight:600}
+.cta-row{display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin:26px 0 18px}
+.badges{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; font-family:var(--mono); font-size:11.5px; color:var(--muted)}
+.badges span{border:1px solid var(--border); border-radius:var(--radius); padding:3px 10px; background:var(--panel)}
+.badges span:first-child{color:var(--accent); border-color:color-mix(in srgb,var(--accent) 55%,var(--border))}
 
-/* --- sections --- */
-section{padding:64px 0 8px}
+/* ── tablet frames (screenshots) ── */
+.tablet{
+  margin:0; background:linear-gradient(180deg,var(--panel-raised),var(--panel));
+  border:1px solid var(--border); border-radius:var(--radius);
+  box-shadow:var(--tablet-shadow); padding:10px;
+}
+.tablet img{display:block; width:100%; height:auto; border:1px solid var(--border); border-radius:2px; cursor:zoom-in; background:var(--panel-sunken)}
+.tablet figcaption{padding:10px 4px 2px; font-size:14px; color:var(--muted); text-align:left}
+.tablet figcaption strong{display:block; color:var(--text); font-family:var(--font-display); font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; margin-bottom:3px}
+.lights{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:22px}
+.lights .tagline{font-family:var(--font-display); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--faint); display:block; margin-bottom:6px}
+.hero-shot{margin-top:44px; box-shadow:var(--tablet-shadow),0 30px 90px -40px rgba(0,0,0,.65)}
+html[data-theme='marble'] .hero-shot{box-shadow:var(--tablet-shadow),0 30px 80px -46px rgba(42,36,29,.6)}
+
+/* ── sections ── */
+section{padding:58px 0 6px}
 h2.sec{
-  font-family:var(--display); font-size:13px; font-weight:700; letter-spacing:.28em;
-  color:var(--accent-2); margin:0 0 6px; text-transform:uppercase;
+  font-size:13px; letter-spacing:.26em; color:var(--accent); margin:0 0 6px;
 }
-p.lead{font-size:19px; margin:0 0 28px; font-weight:600}
-p.lead small{display:block; font-size:14px; font-weight:400; color:var(--muted); margin-top:6px}
+h2.sec em{font-family:var(--font-serif); font-style:italic; font-weight:400; text-transform:none; letter-spacing:.03em; color:var(--faint)}
+p.lead{font-size:20px; font-weight:600; margin:0 0 26px; max-width:760px}
+p.lead small{display:block; font-size:15px; font-weight:400; color:var(--muted); margin-top:6px; font-style:italic}
 
-/* stat strip */
-.stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr)); gap:14px; margin:26px 0 0}
-.stat{background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:16px 18px}
-.stat b{display:block; font-size:26px; font-family:var(--mono); color:#fff}
-.stat b em{font-style:normal; color:var(--accent-2)}
-.stat span{font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted)}
+/* ── stat frieze ── */
+.stats{
+  display:grid; grid-template-columns:repeat(5,minmax(0,1fr));
+  border-top:2px solid var(--border); border-bottom:2px solid var(--border);
+  background:linear-gradient(180deg,var(--panel-raised),var(--panel));
+  box-shadow:var(--hair-shadow),0 2px 8px rgba(0,0,0,.14);
+}
+.stat{padding:16px 12px; text-align:center; border-right:1px dotted var(--border)}
+.stat:last-child{border-right:none}
+.stat b{display:block; font-family:var(--font-display); font-weight:700; font-size:26px; letter-spacing:.04em; color:var(--text)}
+.stat b em{font-style:normal; color:var(--accent)}
+.stat span{display:block; margin-top:4px; font-family:var(--font-display); font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted)}
 
-/* feature grid */
-.grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr)); gap:14px}
-.card{background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:20px; transition:border-color .15s,box-shadow .15s}
-.card:hover{border-color:rgba(0,229,255,.5); box-shadow:var(--glow-cyan)}
-.card .ico{font-size:22px}
-.card h3{margin:10px 0 6px; font-size:15.5px; letter-spacing:.02em}
-.card p{margin:0; font-size:13.5px; color:var(--muted)}
-.card p code{font-family:var(--mono); font-size:12.5px; color:var(--accent-2)}
+/* ── feature tablets ── */
+.grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,310px),1fr)); gap:14px; margin-top:22px}
+.card{
+  background:linear-gradient(180deg,var(--panel-raised),var(--panel));
+  border:1px solid var(--border); border-radius:var(--radius); padding:20px;
+  box-shadow:var(--hair-shadow);
+  transition:border-color var(--dur-fast),box-shadow var(--dur-fast);
+}
+.card:hover{border-color:color-mix(in srgb,var(--accent) 60%,var(--border)); box-shadow:var(--tablet-shadow)}
+.card .ico{width:22px; height:22px; color:var(--accent)}
+.card .ico svg{display:block; width:22px; height:22px}
+.card h3{margin:12px 0 7px; font-size:13px; letter-spacing:.14em}
+.card p{margin:0; font-size:15px; color:var(--muted)}
+.card p code{font-family:var(--mono); font-size:13px; color:var(--accent)}
 
-/* screenshots */
-.shots{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+/* ── twelve steps frieze ── */
+.frieze{
+  display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:6px;
+  margin-top:20px; padding:12px 14px 14px;
+  border-top:2px solid var(--border); border-bottom:2px solid var(--border);
+  background:linear-gradient(180deg,var(--panel-raised),var(--panel));
+  box-shadow:var(--hair-shadow),0 2px 8px rgba(0,0,0,.14);
+}
+.frieze .step{
+  display:flex; flex-direction:column; align-items:center; gap:3px; padding:4px 2px 6px; text-align:center;
+  border-right:1px dotted var(--border);
+}
+.frieze .step:last-child{border-right:none}
+.frieze .step b{font-family:var(--font-display); font-weight:700; font-size:12px; color:var(--faint); letter-spacing:.05em}
+.frieze .step span{font-family:var(--font-display); font-size:9px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted)}
+.frieze .step i{font-family:var(--font-serif); font-style:italic; font-size:11.5px; color:var(--faint)}
+.frieze .step small{font-family:var(--mono); font-size:9.5px; color:var(--faint)}
+.frieze .step.here b,.frieze .step.here span{color:var(--accent)}
+
+/* ── gallery ── */
+.shots{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:22px}
 .shots figure.wide{grid-column:1 / -1}
-@media(max-width:760px){.shots{grid-template-columns:1fr}}
-figure.shot{margin:0; background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden}
-figure.shot img{display:block; width:100%; height:auto; cursor:zoom-in}
-figure.shot figcaption{padding:12px 16px; font-size:13px; color:var(--muted); border-top:1px solid var(--border)}
-figure.shot figcaption strong{color:var(--text); display:block; font-size:14px; margin-bottom:2px}
-.shot-ver{font-family:var(--mono); font-size:11px; color:var(--accent-2); display:block; margin-top:4px}
+.shot-ver{font-family:var(--mono); font-size:11px; color:var(--accent-2); display:block; margin-top:5px}
 
-/* how it works */
+/* ── how it works ── */
 .flow{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr)); gap:14px; margin-bottom:16px}
-.flow .step{background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:20px}
-.flow .n{font-family:var(--mono); color:var(--accent); font-size:12px; letter-spacing:.15em}
-.flow h3{margin:8px 0 6px; font-size:15px}
-.flow p{margin:0; font-size:13.5px; color:var(--muted)}
+.flow .fstep{background:linear-gradient(180deg,var(--panel-raised),var(--panel)); border:1px solid var(--border); border-radius:var(--radius); padding:20px; box-shadow:var(--hair-shadow)}
+.flow .n{font-family:var(--font-display); color:var(--accent); font-size:11px; letter-spacing:.18em; text-transform:uppercase}
+.flow h3{margin:9px 0 6px; font-size:13px}
+.flow p{margin:0; font-size:15px; color:var(--muted)}
+.flow p .num{font-size:13.5px; color:var(--text)}
 .privacy{
-  border:1px solid rgba(16,185,129,.4); background:rgba(16,185,129,.06);
-  border-radius:var(--radius); padding:16px 20px; font-size:14px;
+  border:1px solid color-mix(in srgb,var(--success) 45%,var(--border));
+  background:color-mix(in srgb,var(--success) 7%,transparent);
+  border-radius:var(--radius); padding:16px 20px; font-size:15px;
 }
-.privacy code{font-family:var(--mono); font-size:13px; color:var(--success)}
+.privacy code{font-family:var(--mono); font-size:13.5px; color:var(--success)}
 
-/* comparison table */
-.table-scroll{overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); background:var(--panel)}
-table.cmp{width:100%; border-collapse:collapse; font-size:13.5px; min-width:560px}
+/* ── compare table ── */
+.table-scroll{overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); background:var(--panel); box-shadow:var(--hair-shadow)}
+table.cmp{width:100%; border-collapse:collapse; font-size:14.5px; min-width:600px}
 .cmp th,.cmp td{padding:11px 14px; border-bottom:1px solid var(--border); text-align:left}
-.cmp thead th{font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); white-space:nowrap}
+.cmp thead th{font-family:var(--font-display); font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); white-space:nowrap}
 .cmp thead th.kairos-col{color:var(--accent)}
 .cmp tbody tr:last-child td{border-bottom:none}
+.cmp td:first-child{color:var(--muted)}
 .cmp td.yes{color:var(--success); font-weight:600}
 .cmp td.mid{color:var(--muted)}
+.cmp tbody tr:hover td{background:color-mix(in srgb,var(--accent-2) 5%,transparent)}
 
-/* download */
-.dl{display:grid; grid-template-columns:1.2fr .8fr; gap:16px}
-@media(max-width:760px){.dl{grid-template-columns:1fr}}
-.dl .panel{background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:24px; min-width:0}
-.dl ol{margin:12px 0 0; padding-left:20px; color:var(--muted); font-size:14px}
+/* ── download ── */
+.dl{display:grid; grid-template-columns:1.15fr .85fr; gap:16px}
+.dl .panel{
+  background:linear-gradient(180deg,var(--panel-raised),var(--panel));
+  border:1px solid var(--border); border-radius:var(--radius); padding:24px; min-width:0;
+  box-shadow:var(--hair-shadow);
+}
+.dl ol{margin:14px 0 0; padding-left:20px; color:var(--muted); font-size:15px}
 .dl ol li{margin-bottom:10px}
 .dl ol strong{color:var(--text)}
+.dl .panel > strong{font-family:var(--font-display); font-size:12px; letter-spacing:.14em; text-transform:uppercase}
 pre.term{
-  background:#070b11; border:1px solid var(--border); border-radius:8px;
-  padding:14px 16px; font-family:var(--mono); font-size:12.5px; color:#c9f5ff;
+  background:var(--panel-sunken); border:1px solid var(--border); border-radius:var(--radius);
+  padding:14px 16px; font-family:var(--mono); font-size:12.5px; color:var(--text);
   overflow-x:auto; line-height:1.7; margin:12px 0 0; max-width:100%;
 }
-pre.term .c{color:#5b6577} pre.term .k{color:var(--accent)}
+pre.term .c{color:var(--faint)} pre.term .k{color:var(--accent)}
 
-/* roadmap */
+/* ── roadmap ── */
 .rm-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr)); gap:14px}
-.rm{background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:20px 22px}
-.rm.now{border-color:rgba(255,46,136,.55); box-shadow:var(--glow-magenta)}
-.rm h3{margin:0 0 4px; font-size:15px; font-family:var(--mono)}
-.rm h3 .tag{font-size:10px; letter-spacing:.12em; border:1px solid var(--accent); color:var(--accent); border-radius:5px; padding:1px 7px; margin-left:8px; vertical-align:2px; white-space:nowrap}
-.rm.next h3 .tag{border-color:var(--accent-2); color:var(--accent-2)}
+.rm{background:linear-gradient(180deg,var(--panel-raised),var(--panel)); border:1px solid var(--border); border-radius:var(--radius); padding:20px 22px; box-shadow:var(--hair-shadow)}
+.rm.next{border-color:color-mix(in srgb,var(--accent) 55%,var(--border)); box-shadow:var(--tablet-shadow)}
+.rm h3{margin:0 0 4px; font-size:14px; letter-spacing:.1em}
+.rm h3 .tag{
+  font-family:var(--font-display); font-size:9px; letter-spacing:.14em; border:1px solid var(--accent); color:var(--accent);
+  border-radius:3px; padding:1.5px 7px; margin-left:8px; vertical-align:2px; white-space:nowrap;
+}
 .rm.shipped h3 .tag{border-color:var(--success); color:var(--success)}
-.rm ul{margin:10px 0 0; padding:0; list-style:none; font-size:13.5px; color:var(--muted)}
-.rm li{margin-bottom:8px; padding-left:24px; position:relative}
-.rm li::before{content:'○'; position:absolute; left:2px; color:var(--accent-2)}
-.rm li.done::before{content:'●'; color:var(--success)}
+.rm.later h3 .tag{border-color:var(--border); color:var(--muted)}
+.rm ul{margin:10px 0 0; padding:0; list-style:none; font-size:15px; color:var(--muted)}
+.rm li{margin-bottom:8px; padding-left:22px; position:relative}
+.rm li::before{content:'◇'; position:absolute; left:2px; top:3px; font-size:10px; color:var(--faint)}
+.rm li.done::before{content:'◆'; color:var(--success)}
 .rm li.done{color:var(--text)}
 
-/* lightbox */
-#lightbox{position:fixed; inset:0; z-index:10000; background:rgba(4,6,10,.92); display:none; align-items:center; justify-content:center; padding:24px; cursor:zoom-out}
+/* ── footer ── */
+footer{margin-top:72px; border-top:1px solid var(--border); padding:28px 0 44px; color:var(--muted); font-size:14px}
+footer .wrap{display:flex; gap:18px; flex-wrap:wrap; align-items:center}
+footer .sp{margin-left:auto; font-family:var(--mono); font-size:11.5px}
+footer a{font-family:var(--font-display); font-size:11.5px; letter-spacing:.1em; text-transform:uppercase}
+
+/* ── lightbox ── */
+#lightbox{position:fixed; inset:0; z-index:10000; background:var(--scrim); display:none; align-items:center; justify-content:center; padding:24px; cursor:zoom-out}
 #lightbox.open{display:flex}
-#lightbox img{max-width:100%; max-height:92vh; border:1px solid var(--border); border-radius:10px}
+#lightbox img{max-width:100%; max-height:92vh; border:1px solid var(--border-strong); border-radius:var(--radius); background:var(--panel-sunken)}
 .lb-nav{
   position:absolute; top:50%; transform:translateY(-50%);
-  width:44px; height:64px; font-size:28px; line-height:1;
-  color:var(--accent-2); background:rgba(17,24,39,.8); border:1px solid var(--border);
-  border-radius:10px; cursor:pointer;
+  width:44px; height:64px; font-size:26px; line-height:1; font-family:var(--font-serif);
+  color:var(--accent); background:var(--panel); border:1px solid var(--border);
+  border-radius:var(--radius); cursor:pointer;
+  transition:border-color var(--dur-fast),box-shadow var(--dur-fast);
 }
-.lb-nav:hover{border-color:var(--accent-2); box-shadow:var(--glow-cyan)}
+.lb-nav:hover{border-color:var(--accent); box-shadow:var(--glow-accent-2)}
 .lb-nav.prev{left:12px} .lb-nav.next{right:12px}
-.lb-count{
-  position:absolute; bottom:18px; left:50%; transform:translateX(-50%);
-  font-family:var(--mono); font-size:12px; color:var(--muted);
+.lb-count{position:absolute; bottom:18px; left:50%; transform:translateX(-50%); font-family:var(--mono); font-size:12px; color:var(--muted)}
+
+/* ── reveal ── */
+.rv{opacity:0; transform:translateY(14px); transition:opacity var(--dur-slow) var(--ease-out-soft),transform var(--dur-slow) var(--ease-out-soft)}
+.rv.in{opacity:1; transform:none}
+
+/* ── mobile ── */
+@media(max-width:860px){
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stat{border-bottom:1px dotted var(--border)}
+  .frieze{grid-template-columns:repeat(6,minmax(0,1fr)); gap:4px}
+  .frieze .step{border-bottom:1px dotted var(--border); padding-bottom:10px}
+  .frieze .step:nth-child(6n){border-right:none}
+  .lights{grid-template-columns:1fr}
+  .dl{grid-template-columns:1fr}
 }
-
-/* footer */
-footer{margin-top:72px; border-top:1px solid var(--border); padding:28px 0 40px; color:var(--muted); font-size:13px}
-footer .wrap{display:flex; gap:16px; flex-wrap:wrap; align-items:center}
-footer .sp{margin-left:auto; font-family:var(--mono); font-size:12px}
-
-/* --- mobile --- */
 @media(max-width:640px){
+  body{font-size:16px}
   .wrap{padding:0 16px}
-  nav.top .wrap{flex-wrap:wrap; gap:8px 14px; padding-top:10px; padding-bottom:10px}
-  .logo{font-size:16px}
-  nav.links{margin-left:0; flex-wrap:wrap; gap:6px 14px; font-size:12.5px}
-  header.hero{padding:56px 0 36px}
-  .kicker{font-size:10px; letter-spacing:.12em; line-height:1.8}
-  h1.mega{letter-spacing:.12em}
+  nav.top .wrap{flex-wrap:wrap; gap:8px 12px; padding-top:9px; padding-bottom:9px}
+  .logo{font-size:15px; letter-spacing:.22em}
+  nav.links{margin-left:0; flex-wrap:wrap; gap:6px 12px}
+  nav.links a{font-size:10px}
+  .theme-row{border-left:none; padding-left:0}
+  header.hero{padding:2px 0 36px}
+  .pediment{padding:48px 0 8px}
+  .kicker{font-size:9.5px; letter-spacing:.12em; line-height:1.9; padding:4px 10px}
+  .cta-row{margin:20px 0 14px}
   section{padding:40px 0 4px}
-  p.lead{font-size:17px}
+  p.lead{font-size:17.5px}
+  .shots{grid-template-columns:1fr}
+  .frieze{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .frieze .step:nth-child(6n){border-right:1px dotted var(--border)}
+  .frieze .step:nth-child(4n){border-right:none}
   .hero-shot{margin-top:28px}
   .card{padding:16px}
   .dl .panel{padding:18px}
@@ -226,100 +372,167 @@ footer .sp{margin-left:auto; font-family:var(--mono); font-size:12px}
   footer{margin-top:48px}
   footer .sp{margin-left:0; flex-basis:100%}
 }
-
-/* reveal */
-.rv{opacity:0; transform:translateY(14px); transition:opacity .5s,transform .5s}
-.rv.in{opacity:1; transform:none}
-@media(prefers-reduced-motion:reduce){.rv{opacity:1; transform:none} html{scroll-behavior:auto}}
+@media(prefers-reduced-motion:reduce){
+  .rv{opacity:1; transform:none; transition:none}
+  html{scroll-behavior:auto}
+}
 </style>
 </head>
 <body>
 
+<!-- engraved glyph set -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+<symbol id="i-temple" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 9.5 12 3l9.5 6.5"/><path d="M4.5 9.5V20M9.5 9.5V20M14.5 9.5V20M19.5 9.5V20"/><path d="M2 20h20"/></symbol>
+<symbol id="i-seal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5.2"/><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/></symbol>
+<symbol id="i-compass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.7 8.3l-2.3 5.1-5.1 2.3 2.3-5.1z"/></symbol>
+<symbol id="i-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2.5 12C6 5.8 18 5.8 21.5 12 18 18.2 6 18.2 2.5 12Z"/><circle cx="12" cy="12" r="3"/></symbol>
+<symbol id="i-scroll" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 4h11v13.5a2.5 2.5 0 0 0 2.5 2.5H8a2.5 2.5 0 0 1-2.5-2.5V4Z"/><path d="M9 8.5h6M9 12h6M9 15.5h3.5"/></symbol>
+<symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M6.5 15.5l4-5 3.5 3 5.5-7"/></symbol>
+<symbol id="i-camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5A1.5 1.5 0 0 1 4.5 7H8l1.5-3h5L16 7h3.5A1.5 1.5 0 0 1 21 8.5v9a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5v-9Z"/><circle cx="12" cy="12.5" r="3.6"/></symbol>
+<symbol id="i-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3.5" y="3.5" width="7" height="7"/><rect x="13.5" y="3.5" width="7" height="7"/><rect x="3.5" y="13.5" width="7" height="7"/><rect x="13.5" y="13.5" width="7" height="7"/></symbol>
+<symbol id="i-bars" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 20.5h18"/><path d="M6 20.5V12M11 20.5V6M16 20.5V9.5M20 20.5v-5"/></symbol>
+<symbol id="i-scales" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5V20.5"/><path d="M4 6.5h16"/><path d="M7.9 6.5 4.3 13.4h7.2L7.9 6.5Z"/><path d="M16.1 6.5l3.6 6.9h-7.2l3.6-6.9Z"/><path d="M8 20.5h8"/></symbol>
+<symbol id="i-flame" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5c.6 3.4-4.5 5.4-4.5 10a4.5 4.5 0 0 0 9 0c0-1.7-.6-3-1.5-4.4-.6 1-1.4 1.6-2.2 1.8.5-2.6.4-5-1.3-7.4Z"/></symbol>
+<symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4a6 6 0 0 0-6 6c0 5-2 6.5-2 6.5h16S18 15 18 10a6 6 0 0 0-6-6Z"/><path d="M10 19.5a2.2 2.2 0 0 0 4 0"/><path d="M12 4V2.5"/></symbol>
+<symbol id="i-columns" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 5h15l-1.5 3.5H6L4.5 5Z"/><path d="M7.5 8.5V19M12 8.5V19M16.5 8.5V19"/><path d="M5.5 19h13M4.5 21h15"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l6 6"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 2.8V11c0 5.4-3.2 8.9-8 10-4.8-1.1-8-4.6-8-10V5.8L12 3Z"/><path d="M8.8 11.6l2.2 2.2 4.4-4.6"/></symbol>
+</svg>
+
 <nav class="top">
   <div class="wrap">
-    <a class="logo" href="#top">KAIROS</a>
+    <a class="logo" href="#top">ΚΑΙΡΟΣ</a>
     <div class="links">
+      <a href="#themes">Themes</a>
       <a href="#features">Features</a>
+      <a href="#steps">Levels</a>
       <a href="#screenshots">Screenshots</a>
       <a href="#how">How it works</a>
       <a href="#compare">Compare</a>
       <a href="#download">Download</a>
       <a href="#roadmap">Roadmap</a>
       <a href="https://github.com/Digitals06/kairos" target="_blank" rel="noopener">GitHub ↗</a>
+      <div class="theme-row" role="group" aria-label="Theme">
+        <button class="theme-opt" data-set="marble">Marble</button>
+        <button class="theme-opt" data-set="basalt">Basalt</button>
+      </div>
     </div>
   </div>
 </nav>
 
 <div class="wrap" id="top">
   <header class="hero">
+    <div class="pediment rv">
+      <span class="roof" aria-hidden="true"></span>
+      <span class="cornice" aria-hidden="true"></span>
+      <h1 class="gable">ΚΑΙΡΟΣ</h1>
+      <p class="epigraph"><small>καιρός — the opportune moment</small></p>
+      <span class="meander" aria-hidden="true"></span>
+    </div>
     <span class="kicker">KOVAAK'S FPS AIM TRAINER · DESKTOP COMPANION</span>
-    <h1 class="mega">KAIROS</h1>
-    <p class="sub"><strong>Track every benchmark. Watch ranks climb.</strong><br>Weekly progress, XP levels, and exact per-scenario targets — in a neon-soaked native app. No login, no accounts. Your data stays in a local file on your PC.</p>
+    <p class="sub"><strong>Track every benchmark. Watch ranks climb. Know what to play next.</strong><br>Ranks recomputed locally, exact per-scenario targets for your next tier, and a weekly plaque of the grind — carved into marble and basalt. No login, no accounts: your whole history lives in one file on your PC.</p>
     <div class="cta-row">
-      <a class="btn btn-accent" href="https://github.com/Digitals06/kairos/releases" target="_blank" rel="noopener">⬇ Download kairos.exe</a>
+      <a class="btn btn-accent" href="https://github.com/Digitals06/kairos/releases" target="_blank" rel="noopener">↓ Download kairos.exe</a>
       <a class="btn" href="https://github.com/Digitals06/kairos" target="_blank" rel="noopener">View source on GitHub</a>
     </div>
-    <div class="badges"><span id="rel-ver" title="Latest GitHub release">v0.2.1</span><span id="rel-dl" title="total kairos.exe downloads, all releases">⬇ 109</span><span>Rust</span><span>Tauri v2</span><span>Svelte 5</span><span>Chart.js</span><span>SQLite · local-first</span><span>MIT</span></div>
-    <figure class="hero-shot rv" style="margin-left:0;margin-right:0">
-      <picture><source srcset="assets/app-overview-v021.webp" type="image/webp"><img src="assets/app-overview-v021.png" alt="Kairos overview with the weekly strip and benchmark family cards"></picture>
-      <figcaption>Live capture — the weekly strip (plays, time trained, streak, XP), family cards with rank badges, and the type filter tabs.<span class="shot-ver">captured from v0.2.1 · Sep 2026</span></figcaption>
+    <div class="badges"><span id="rel-ver" title="Latest GitHub release">v0.3.0</span><span id="rel-dl" title="total kairos.exe downloads, all releases">↓ 139</span><span>Rust</span><span>Tauri v2</span><span>Svelte 5</span><span>Chart.js</span><span>SQLite · local-first</span><span>MIT</span></div>
+    <figure class="hero-shot tablet rv">
+      <picture><source srcset="assets/app-overview-basalt-v030.webp" type="image/webp"><img src="assets/app-overview-basalt-v030.png" alt="Kairos overview in the basalt theme — weekly plaque, grind coach and the stoa of benchmark cards"></picture>
+      <figcaption><strong>The temple at night — basalt theme</strong>The weekly plaque, the grind coach and the stoa of benchmark families. The window is frameless; the controls are engraved.<span class="shot-ver">captured from v0.3.0 · Sep 2026</span></figcaption>
     </figure>
   </header>
 
+  <section id="themes">
+    <h2 class="sec">Two lights <em>— μάρμαρος &amp; βᾶσαλτος</em></h2>
+    <p class="lead">One temple, two materials.<small>Marble for daylight sessions, basalt for the night shift — or let it follow your OS. Surfaces, rank seals and chart palettes all re-cut on the flip.</small></p>
+    <div class="lights">
+      <figure class="tablet rv">
+        <span class="tagline">Marble — the sunlit agora</span>
+        <picture><source srcset="assets/app-overview-marble-v030.webp" type="image/webp"><img src="assets/app-overview-marble-v030.png" alt="Kairos overview in the marble theme — ivory surfaces, terracotta accents" loading="lazy"></picture>
+      </figure>
+      <figure class="tablet rv">
+        <span class="tagline">Basalt — night temple, torchlight gold</span>
+        <picture><source srcset="assets/app-overview-basalt-v030.webp" type="image/webp"><img src="assets/app-overview-basalt-v030.png" alt="Kairos overview in the basalt theme — dark stone, gold accents" loading="lazy"></picture>
+      </figure>
+    </div>
+  </section>
+
   <section id="features">
-    <h2 class="sec">// Features</h2>
+    <h2 class="sec">Features <em>— δυνάμεις</em></h2>
     <p class="lead">Everything the grind needs, nothing it doesn't.<small>Every benchmark computes its rank from local data — 100% client-side, no server fallback.</small></p>
     <div class="stats rv">
-      <div class="stat"><b>100%</b><span>client-side rank coverage</span></div>
+      <div class="stat"><b>100<em>%</em></b><span>client-side rank coverage</span></div>
       <div class="stat"><b>ALL</b><span>evxl benchmark families</span></div>
-      <div class="stat"><b class="num">0</b><span>accounts · logins · telemetry</span></div>
+      <div class="stat"><b class="num">0</b><span>NO ACCOUNTS · NO TELEMETRY</span></div>
+      <div class="stat"><b>‹2<em>s</em></b><span>launch to painted grid</span></div>
       <div class="stat"><b>1 <em>file</em></b><span>your whole database</span></div>
     </div>
-    <div class="grid" style="margin-top:14px">
-      <div class="card rv"><div class="ico">🎯</div><h3>evxl-accurate ranks, computed locally</h3><p>Reverse-engineered from evxl.app: Voltaic energy, harmonic / top-N / count-based methods and more — every family computes from your scores. No server fallback remains.</p></div>
-      <div class="card rv"><div class="ico">🔔</div><h3>Rank-change toasts</h3><p>Every sync diffs your two newest snapshots per benchmark. Rank moves? A <code>RANK UP</code> toast with old → new tier, or one summary when several shift.</p></div>
-      <div class="card rv"><div class="ico">⚡</div><h3>Live local plays</h3><p>A background watcher reads KovaaK's <code>Stats</code> folder while the app is open — new sessions land in your charts on their own. No refresh click.</p></div>
-      <div class="card rv"><div class="ico">📅</div><h3>Weekly report + XP levels</h3><p>Plays, days trained, scored minutes trained, current streak, and an XP level with its progress bar — plus this week's benchmark rank changes, right at the top of the app.</p></div>
-      <div class="card rv"><div class="ico">🗂</div><h3>Full benchmark coverage</h3><p>Every benchmark tracked on <a href="https://evxl.app" target="_blank" rel="noopener">evxl.app</a> — Voltaic, Revosect, PureG, Aimerz+ and the rest — with official rank names and colors.</p></div>
-      <div class="card rv"><div class="ico">🧩</div><h3>One card per family</h3><p>The overview groups benchmarks by family: best rank badge, difficulty count, and unroll to see every difficulty with its tier-ladder rungs and grind chip — ▶ runs to next tier, plateaued, or complete.</p></div>
-      <div class="card rv"><div class="ico">🔄</div><h3>One-click sync, polite by default</h3><p>Quick pass for your mains, Deep Scan for everything. Smart sync skips benchmarks whose CSVs haven't changed; throttles get patient retries.</p></div>
-      <div class="card rv"><div class="ico">📈</div><h3>Per-scenario detail</h3><p>Score-history chart with PB progression lines, 7-day average, running high, avg/high scores, 30-day improvement % — and a sort toggle that lines the weakest scenarios up first.</p></div>
-      <div class="card rv"><div class="ico">🧪</div><h3>Consistency &amp; plateau detection</h3><p>Chips on every scenario: progressing or plateaued, PB count, days since your last PB, and CV — the spread of your recent plays. Swap a stalled grind for one that's still climbing.</p></div>
-      <div class="card rv"><div class="ico">🧭</div><h3>What to grind next</h3><p>Each benchmark page names the cheapest per-scenario scores for the next tier — probed against the local engine, so exact for every method family. Targets cap at each scenario's ladder top, so they're always achievable; when no single scenario can carry you, you get a numbered rung-by-rung plan instead.</p></div>
-      <div class="card rv"><div class="ico">📌</div><h3>Search + favorites</h3><p>Filter the grid by name, pin benchmarks to the top. Pins survive restarts. Registry updater keeps new seasons coming without a rebuild.</p></div>
-      <div class="card rv"><div class="ico">🏷️</div><h3>Benchmark-type filter</h3><p>12 tabs mirroring evxl's own grouping — Tracking, Static, Clicking, Micro, Dynamic, Evasive and more. Multi-select, combined with the name search; only pure benchmarks match a style tab, everything unspecialized sits under Mixed.</p></div>
-      <div class="card rv"><div class="ico">🔒</div><h3>Private by design</h3><p>No accounts, no telemetry — only public APIs. Live API tests skip unless you opt in. Auto-sync on launch with a “last synced X ago” indicator.</p></div>
-      <div class="card rv"><div class="ico">💾</div><h3>One-click backup</h3><p>The settings menu exports your entire history — a full JSON backup plus a CSV series of your scores — straight to your Documents folder.</p></div>
+    <div class="grid">
+      <div class="card rv"><div class="ico"><svg><use href="#i-temple"/></svg></div><h3>The temple identity</h3><p>Marble and basalt themes — or follow the OS. A frameless window with engraved controls, carved scrollbars, surfaces that scale with the window, and charts that re-palette on the flip.</p></div>
+      <div class="card rv"><div class="ico"><svg><use href="#i-seal"/></svg></div><h3>evxl-accurate ranks, computed locally</h3><p>Reverse-engineered from evxl.app: Voltaic energy, harmonic / top-N / count-based methods and more. Every family computes from your scores — no server fallback remains.</p></div>
+      <div class="card rv"><div class="ico"><svg><use href="#i-compass"/></svg></div><h3>What to grind next</h3><p>Each benchmark page names the cheapest per-scenario scores for the next tier — probed against the local engine, exact for every method family, and capped at each scenario's ladder top. When no single scenario can carry you, you get a numbered plan.</p></div>
+      <div class="card rv"><div class="ico"><svg><use href="#i-eye"/></svg></div><h3>Grind coach</h3><p>Pick a family and the coach watches your session: the next 3 scenarios to grind, refreshed as you play. App-side only — no game overlay, no auto-refresh race.</p></div>
+      <div class="card rv"><div class="ico"><svg><use href="#i-scroll"/></svg></div><h3>Weekly plaque</h3><p>Plays per day, scored minutes (actual alive-time — never guessed), streak, rank changes, and your place on the Twelve-Steps frieze. One plaque, top of the app.</p></div>
+      <div class="card rv"><div class="ico"><svg><use href="#i-chart"/></svg></div><h3>Scenario analytics</h3><p>Every scenario of a benchmark on one screen: mini score-history charts, PB progression, spread, plateau tags and 30-day improvement. Built for screenshots.</p></div>
+      <div class="card rv"><div class="ico"><svg><use href="#i-camera"/></svg></div><h3>Capture</h3><p>One button composes the analytics report into a single image and copies it to your clipboard — ready for Discord or your notes.</p></div>
+      <div class="card rv"><div class="ico"><svg><use href="#i-grid"/></svg></div><h3>One card per family</h3><p>The stoa groups benchmarks by family: best rank seal, difficulty count, and an unroll showing every difficulty's tier-ladder rungs with grind chips — ▶ runs to next tier, or complete.</p></div>
+      <div class="card rv"><div class="ico"><svg><use href="#i-bars"/></svg></div><h3>Per-scenario detail</h3><p>Score history with PB progression — local plays and sync snapshots, deduplicated. Running high, 7-day average, 30-day improvement — and a sort that cycles weakest → strongest → order.</p></div>
+      <div class="card rv"><div class="ico"><svg><use href="#i-scales"/></svg></div><h3>Consistency &amp; plateau detection</h3><p>Every grind target carries spread — how steady your recent runs are — plus plateau tags, so you can swap a stalled grind for one that's still climbing.</p></div>
+      <div class="card rv"><div class="ico"><svg><use href="#i-flame"/></svg></div><h3>Live local plays</h3><p>A background watcher reads KovaaK's <code>Stats</code> folder while the app is open — new sessions land in your charts on their own. No refresh click.</p></div>
+      <div class="card rv"><div class="ico"><svg><use href="#i-bell"/></svg></div><h3>Rank-change toasts</h3><p>Every sync diffs your two newest snapshots per benchmark. Rank moves? A <code>RANK UP</code> toast with old → new tier — or one summary when several shift.</p></div>
+      <div class="card rv"><div class="ico"><svg><use href="#i-columns"/></svg></div><h3>Full benchmark coverage</h3><p>Every benchmark tracked on <a href="https://evxl.app" target="_blank" rel="noopener">evxl.app</a> — Voltaic, Revosect, PureG, Aimerz+ and the rest — with official rank names and colors.</p></div>
+      <div class="card rv"><div class="ico"><svg><use href="#i-search"/></svg></div><h3>Search, filters &amp; favorites</h3><p>Twelve type tabs mirroring evxl's own grouping, name search, and pins that survive restarts. The registry updater keeps new seasons coming without a rebuild.</p></div>
+      <div class="card rv"><div class="ico"><svg><use href="#i-shield"/></svg></div><h3>Private by design</h3><p>No accounts, no telemetry — only public APIs. Everything lives in <code>%LOCALAPPDATA%\kairos\store.db</code>, with one-click JSON + CSV backup.</p></div>
+    </div>
+  </section>
+
+  <section id="steps">
+    <h2 class="sec">The Twelve Steps <em>— βαθμοί</em></h2>
+    <p class="lead">Levels carved in XP, from the empty vessel to the thing-in-itself.<small>Every scored run feeds the frieze at the top of the app — the ladder runs κενόδοξος to νοούμενον.</small></p>
+    <div class="frieze rv" role="list">
+      <div class="step" role="listitem"><b>I</b><span>Kenodoxos</span><i>κενόδοξος</i><small>0 XP</small></div>
+      <div class="step" role="listitem"><b>II</b><span>Arche</span><i>ἀρχή</i><small>500</small></div>
+      <div class="step" role="listitem"><b>III</b><span>Praxis</span><i>πρᾶξις</i><small>2k</small></div>
+      <div class="step" role="listitem"><b>IV</b><span>Askesis</span><i>ἄσκησις</i><small>6k</small></div>
+      <div class="step" role="listitem"><b>V</b><span>Melete</span><i>μελέτη</i><small>15k</small></div>
+      <div class="step" role="listitem"><b>VI</b><span>Prokope</span><i>προκοπή</i><small>40k</small></div>
+      <div class="step" role="listitem"><b>VII</b><span>Katartisis</span><i>κατάρτισις</i><small>100k</small></div>
+      <div class="step" role="listitem"><b>VIII</b><span>Metron</span><i>μέτρον</i><small>250k</small></div>
+      <div class="step" role="listitem"><b>IX</b><span>Kairos</span><i>καιρός</i><small>600k</small></div>
+      <div class="step" role="listitem"><b>X</b><span>Kronos</span><i>χρόνος</i><small>1.4M</small></div>
+      <div class="step" role="listitem"><b>XI</b><span>Aion</span><i>αἰών</i><small>3M</small></div>
+      <div class="step" role="listitem"><b>XII</b><span>Noumenon</span><i>νοούμενον</i><small>7M</small></div>
     </div>
   </section>
 
   <section id="screenshots">
-    <h2 class="sec">// Screenshots</h2>
-    <p class="lead">Straight from the app.<small>Click any image to zoom. All captured live from v0.2.1.</small></p>
+    <h2 class="sec">Screenshots <em>— εἰκόνες</em></h2>
+    <p class="lead">Straight from the app.<small>Click any image to zoom. Captured live from v0.3.0 — both themes.</small></p>
     <div class="shots">
-      <figure class="shot rv"><picture><source srcset="assets/app-grid-v021.webp" type="image/webp"><img src="assets/app-grid-v021.png" alt="Kairos family benchmark grid" loading="lazy"></picture><figcaption><strong>Benchmark grid</strong>One card per family — Aimerz+, AimSpeed, Amare's Quest, Angelic, Anima Micro… each with its best rank badge.<span class="shot-ver">captured from v0.2.1 · Sep 2026</span></figcaption></figure>
-      <figure class="shot rv"><picture><source srcset="assets/app-family-v021.webp" type="image/webp"><img src="assets/app-family-v021.png" alt="Kairos family card unrolled showing grind chips per difficulty" loading="lazy"></picture><figcaption><strong>Family unroll + grind chips</strong>Viscose Benchmarks S2 unrolled: every difficulty with its tier-ladder rungs, plus a chip stating the grind cost — ▶ 7 runs to next tier, complete, or plateaued.<span class="shot-ver">captured from v0.2.1 · Sep 2026</span></figcaption></figure>
-      <figure class="shot wide rv"><picture><source srcset="assets/app-weekly-v021.webp" type="image/webp"><img src="assets/app-weekly-v021.png" alt="Kairos weekly report strip with plays, time trained, streak, XP level and rank changes" loading="lazy"></picture><figcaption><strong>Weekly report + XP</strong>Plays, days trained, scored minutes trained, streak, and an XP level with progress bar — plus this week's rank changes.<span class="shot-ver">captured from v0.2.1 · Sep 2026</span></figcaption></figure>
-      <figure class="shot wide rv"><picture><source srcset="assets/app-detail-top-v021.webp" type="image/webp"><img src="assets/app-detail-top-v021.png" alt="Kairos Tracer Benchmark Hard detail page" loading="lazy"></picture><figcaption><strong>Scenario deep-dive</strong>Tracer Benchmark Hard — rank, the what-to-grind-next panel, and stats, all scoped to the selected scenario.<span class="shot-ver">captured from v0.2.1 · Sep 2026</span></figcaption></figure>
-      <figure class="shot wide rv"><picture><source srcset="assets/app-detail-sort-v021.webp" type="image/webp"><img src="assets/app-detail-sort-v021.png" alt="Kairos scenarios table sorted weakest first with one-button sort toggle" loading="lazy"></picture><figcaption><strong>Weakest-first sorting</strong>The scenario table sorted by rank tier — weakest scenarios rise to the top, ties broken by gap to the next tier. One button cycles the order.<span class="shot-ver">captured from v0.2.1 · Sep 2026</span></figcaption></figure>
-      <figure class="shot wide rv"><picture><source srcset="assets/app-detail-chart-v021.webp" type="image/webp"><img src="assets/app-detail-chart-v021.png" alt="Kairos score history chart with running high and 7-day average" loading="lazy"></picture><figcaption><strong>Score history</strong>Running high, 7-day average, and PB progression over your local plays + sync snapshots, deduplicated into one series.<span class="shot-ver">captured from v0.2.1 · Sep 2026</span></figcaption></figure>
-      <figure class="shot wide rv"><picture><source srcset="assets/app-grind-v021.webp" type="image/webp"><img src="assets/app-grind-v021.png" alt="Kairos what-to-grind-next panel with per-scenario targets and CV" loading="lazy"></picture><figcaption><strong>What to grind next</strong>Diamond → Master: the exact score each scenario needs, with each target's CV — or a combined step-by-step plan when one scenario can't carry it.<span class="shot-ver">captured from v0.2.1 · Sep 2026</span></figcaption></figure>
+      <figure class="shot wide tablet rv"><picture><source srcset="assets/app-family-v030.webp" type="image/webp"><img src="assets/app-family-v030.png" alt="Kairos family card unrolled showing tier-ladder rungs and grind chips" loading="lazy"></picture><figcaption><strong>Family unroll + grind chips</strong>Viscose Benchmarks S2 unrolled — every difficulty with its tier-ladder rungs, each carrying its grind chip: ▶ 7 runs to next tier, complete, or the full count ahead.<span class="shot-ver">captured from v0.3.0 · Sep 2026</span></figcaption></figure>
+      <figure class="shot wide tablet rv"><picture><source srcset="assets/app-coach-v030.webp" type="image/webp"><img src="assets/app-coach-v030.png" alt="Kairos grind coach strip showing the next three scenarios to play" loading="lazy"></picture><figcaption><strong>Grind coach</strong>Pick a family mid-session — the coach grades the next 3 scenarios to play and refreshes as you grind.<span class="shot-ver">captured from v0.3.0 · Sep 2026</span></figcaption></figure>
+      <figure class="shot wide tablet rv"><picture><source srcset="assets/app-weekly-v030.webp" type="image/webp"><img src="assets/app-weekly-v030.png" alt="Kairos weekly plaque with the torch day strip, twelve-steps frieze and rank changes" loading="lazy"></picture><figcaption><strong>Weekly plaque — ἑβδομάς</strong>Plays per day, scored minutes, streak and the Twelve-Steps frieze — one plaque at the top of the app.<span class="shot-ver">captured from v0.3.0 · Sep 2026</span></figcaption></figure>
+      <figure class="shot wide tablet rv"><picture><source srcset="assets/app-analytics-v030.webp" type="image/webp"><img src="assets/app-analytics-v030.png" alt="Kairos analytics view with a mini chart per scenario of a benchmark" loading="lazy"></picture><figcaption><strong>Scenario analytics</strong>Every scenario of a benchmark on one screen — mini score histories, PB progression, spread, plateau and 30-day improvement.<span class="shot-ver">captured from v0.3.0 · Sep 2026</span></figcaption></figure>
+      <figure class="shot wide tablet rv"><picture><source srcset="assets/app-capture-v030.webp" type="image/webp"><img src="assets/app-capture-v030.png" alt="The composed analytics report image produced by Kairos capture" loading="lazy"></picture><figcaption><strong>Capture</strong>One button composes the analytics report into a single image — copied straight to your clipboard.<span class="shot-ver">composed by v0.3.0 · Sep 2026</span></figcaption></figure>
+      <figure class="shot wide tablet rv"><picture><source srcset="assets/app-detail-marble-v030.webp" type="image/webp"><img src="assets/app-detail-marble-v030.png" alt="Kairos Avasive S2 Medium deep page in the marble theme" loading="lazy"></picture><figcaption><strong>Scenario deep-dive — marble</strong>Avasive S2 Medium in daylight: the rank inscription, the what-to-grind-next plan, and the stat row.<span class="shot-ver">captured from v0.3.0 · Sep 2026</span></figcaption></figure>
+      <figure class="shot wide tablet rv"><picture><source srcset="assets/app-chart-marble-v030.webp" type="image/webp"><img src="assets/app-chart-marble-v030.png" alt="Kairos score history chart in the marble theme with running high and 7-day average" loading="lazy"></picture><figcaption><strong>Score history — marble</strong>Local plays + sync snapshots, deduplicated; running high, 7-day average, PB progression. Charts are re-cut per theme.<span class="shot-ver">captured from v0.3.0 · Sep 2026</span></figcaption></figure>
+      <figure class="shot wide tablet rv"><picture><source srcset="assets/app-grind-v030.webp" type="image/webp"><img src="assets/app-grind-v030.png" alt="Kairos what-to-grind-next panel with per-scenario targets and spread" loading="lazy"></picture><figcaption><strong>What to grind next</strong>Unranked → Charm: no single scenario carries you, so the app lays out the combined plan — every target with its exact score.<span class="shot-ver">captured from v0.3.0 · Sep 2026</span></figcaption></figure>
     </div>
   </section>
 
   <section id="how">
-    <h2 class="sec">// How it works</h2>
+    <h2 class="sec">How it works <em>— ὁδός</em></h2>
     <p class="lead">Three public sources in, one local file out.<small>Nothing is uploaded anywhere. Ever.</small></p>
     <div class="flow">
-      <div class="step rv"><div class="n">01 · SCORES</div><h3>KovaaK's public score server</h3><p>Scores, ranks and leaderboard positions. No login needed — only public endpoints.</p></div>
-      <div class="step rv"><div class="n">02 · DEFINITIONS</div><h3>evxl.app lookup + registry</h3><p>Finds your profile plus benchmark and rank definitions, cached with a version stamp.</p></div>
-      <div class="step rv"><div class="n">03 · LOCAL TRUTH</div><h3>Your <span class="num">Stats</span> folder</h3><p><span class="num">*.csv</span> local play history, watched live while the app runs. <span class="num">Refresh Local</span> re-scans without touching the network.</p></div>
+      <div class="fstep rv"><div class="n">I — SCORES</div><h3>KovaaK's public score server</h3><p>Scores, ranks and leaderboard positions. No login needed — only public endpoints.</p></div>
+      <div class="fstep rv"><div class="n">II — DEFINITIONS</div><h3>evxl.app lookup + registry</h3><p>Finds your profile plus benchmark and rank definitions, cached with a version stamp.</p></div>
+      <div class="fstep rv"><div class="n">III — LOCAL TRUTH</div><h3>Your <span class="num">Stats</span> folder</h3><p><span class="num">*.csv</span> local play history, watched live while the app runs. <span class="num">Refresh Local</span> re-scans without touching the network.</p></div>
     </div>
-    <div class="privacy rv">💾 Everything lands in one file: <code>%LOCALAPPDATA%\kairos\store.db</code> — back it up, move it, it's yours.</div>
+    <div class="privacy rv">Everything lands in one file: <code>%LOCALAPPDATA%\kairos\store.db</code> — back it up, move it, it's yours.</div>
   </section>
 
   <section id="compare">
-    <h2 class="sec">// Why Kairos</h2>
+    <h2 class="sec">Why Kairos <em>— σύγκρισις</em></h2>
     <p class="lead">The tracker that tells you what to play next.<small>evxl.app shows where you stand — Kairos computes how to move.</small></p>
     <div class="table-scroll rv">
       <table class="cmp">
@@ -327,8 +540,10 @@ footer .sp{margin-left:auto; font-family:var(--mono); font-size:12px}
         <tbody>
           <tr><td>Next-tier targets</td><td class="yes">Exact, per scenario</td><td class="mid">Ranks only</td><td class="mid">Hand-computed</td></tr>
           <tr><td>Rank source</td><td class="yes">Recomputed locally</td><td class="mid">Server rank (often stale)</td><td class="mid">Manual lookup</td></tr>
+          <tr><td>All-scenario analytics</td><td class="yes">One screen + capture</td><td class="mid">Per-scenario lookups</td><td class="mid">—</td></tr>
           <tr><td>Local plays</td><td class="yes">Automatic CSV watcher</td><td class="mid">Not tracked</td><td class="mid">Manual entry</td></tr>
-          <tr><td>Weekly report + XP</td><td class="yes">Streak, levels, rank moves</td><td class="mid">No</td><td class="mid">Manual</td></tr>
+          <tr><td>Weekly plaque + XP</td><td class="yes">Streak, levels, rank moves</td><td class="mid">No</td><td class="mid">Manual</td></tr>
+          <tr><td>Themeable interface</td><td class="yes">Marble, basalt, OS-follow</td><td class="mid">Single theme</td><td class="mid">—</td></tr>
           <tr><td>Login needed</td><td class="yes">None</td><td class="yes">None</td><td class="mid">Google account</td></tr>
           <tr><td>Works offline</td><td class="yes">Yes, local DB</td><td class="mid">No</td><td class="yes">Yes</td></tr>
         </tbody>
@@ -337,15 +552,15 @@ footer .sp{margin-left:auto; font-family:var(--mono); font-size:12px}
   </section>
 
   <section id="download">
-    <h2 class="sec">// Get Kairos</h2>
+    <h2 class="sec">Get Kairos <em>— λῆψις</em></h2>
     <p class="lead">Running in under a minute.<small>Windows 10/11 · free · MIT licensed</small></p>
     <div class="dl">
       <div class="panel rv">
-        <a class="btn btn-accent" href="https://github.com/Digitals06/kairos/releases" target="_blank" rel="noopener">⬇ Get kairos.exe — latest release</a>
+        <a class="btn btn-accent" href="https://github.com/Digitals06/kairos/releases" target="_blank" rel="noopener">↓ Get kairos.exe — latest release</a>
         <ol>
           <li><strong>Download</strong> <span class="num">kairos.exe</span> from the <a href="https://github.com/Digitals06/kairos/releases" target="_blank" rel="noopener">latest release</a> and double-click it.</li>
           <li><strong>Enter your Steam ID</strong> (or vanity name / profile link).</li>
-          <li><strong>Hit Sync Now</strong> — your benchmarks roll in, ranks computed locally.</li>
+          <li><strong>Hit Sync Now</strong> — your benchmarks roll in, ranks computed locally. Pick marble or basalt, then go grind.</li>
         </ol>
       </div>
       <div class="panel rv">
@@ -356,74 +571,70 @@ cd kairos\crates\kovaaks-tauri\ui
 npm install &amp;&amp; npm run build
 cd ..\src-tauri
 <span class="k">cargo build --release --features custom-protocol</span></pre>
-        <p style="font-size:13px;color:var(--muted);margin:12px 0 0">Full steps in the <a href="https://github.com/Digitals06/kairos#readme" target="_blank" rel="noopener">README</a>. If Kairos helps your grind, <a href="https://ko-fi.com/Q2S1237A82" target="_blank" rel="noopener">support it on Ko-fi ☕</a>.</p>
+        <p style="font-size:14px;color:var(--muted);margin:12px 0 0">Full steps in the <a href="https://github.com/Digitals06/kairos#readme" target="_blank" rel="noopener">README</a>. If Kairos helps your grind, <a href="https://ko-fi.com/Q2S1237A82" target="_blank" rel="noopener">support it on Ko-fi</a>.</p>
       </div>
     </div>
   </section>
 
   <section id="roadmap">
-    <h2 class="sec">// Roadmap</h2>
+    <h2 class="sec">Roadmap <em>— πορεία</em></h2>
     <p class="lead">Shipped when done and verified. No dates.<small>Tracked in <a href="https://github.com/Digitals06/kairos/blob/main/ROADMAP.md" target="_blank" rel="noopener">ROADMAP.md</a> — open development, public but small.</small></p>
     <div class="rm-grid">
-      <div class="rm now rv">
-        <h3>v0.2.1 <span class="tag">CURRENT</span></h3>
-        <ul>
-          <li class="done">Grind chips on overview cards — runs-to-next, plateaued, complete</li>
-          <li class="done">Time-trained (scored minutes) chip in the weekly strip</li>
-          <li class="done">Weakest → strongest scenario sorting on deep pages</li>
-          <li class="done">Under-50% coverage ranks Unranked — partial data can't inflate a tier</li>
-        </ul>
-      </div>
-      <div class="rm next rv">
-        <h3>v0.3.0 <span class="tag">NEXT</span></h3>
-        <ul>
-          <li>Workflows while playing — tray mode + optional auto-launch</li>
-          <li>Reconcile view — API vs local CSV discrepancy report</li>
-          <li>Grind session coach — the next 3 scenarios while you play</li>
-          <li>Playlists &amp; scenario launching into KovaaK's from the app</li>
-        </ul>
-      </div>
       <div class="rm next rv">
         <h3>v0.4.0 <span class="tag">NEXT</span></h3>
         <ul>
-          <li>Full UI revamp — a signature Kairos identity</li>
-          <li>Scenario analytics view — every scenario of a benchmark on one screen</li>
-          <li>Capture button — composes the report into one shareable image</li>
+          <li>Tray mode — the watcher keeps the app fresh while KovaaK's runs; auto-launch optional</li>
+          <li>Reconcile view — API snapshot vs local CSV discrepancy report, per-card mismatch chips</li>
+          <li>Playlists &amp; launch — deep-link scenarios in KovaaK's from the app</li>
         </ul>
       </div>
       <div class="rm next rv">
         <h3>v0.5.0 <span class="tag">NEXT</span></h3>
         <ul>
-          <li>Local bench support — user-defined benchmarks with custom ranks</li>
-          <li>Discord share card (PNG export)</li>
-          <li>Opt-in global leaderboards — off by default</li>
-        </ul>
-      </div>
-      <div class="rm shipped rv">
-        <h3>v0.1.5 – v0.2.0 <span class="tag">SHIPPED</span></h3>
-        <ul>
-          <li class="done">Weekly report + XP, family overview, PB progression, CSV export (v0.2.0)</li>
-          <li class="done">Consistency &amp; plateau detection (v0.1.9)</li>
-          <li class="done">Full local rank coverage + JSON backup (v0.1.8)</li>
-          <li class="done">Grind-next panel + ladder capping (v0.1.6 – v0.1.7)</li>
-          <li class="done">Smart sync, registry updater, auto-sync (v0.1.5)</li>
+          <li>Local bench support — user-defined benchmarks with custom rank names &amp; thresholds</li>
+          <li>Discord share card — composed PNG export</li>
+          <li>Opt-in global leaderboards — cached hard, off by default</li>
         </ul>
       </div>
       <div class="rm rv">
-        <h3>LATER <span class="tag" style="border-color:var(--border);color:var(--muted)">UNPROMISED</span></h3>
+        <h3>v0.3.1 <span class="tag">PLANNED</span></h3>
+        <ul>
+          <li>QoL bundle being picked: click-to-copy scores, remember expanded families, keyboard navigation in the stoa, sort memory, grind “GO” button</li>
+        </ul>
+      </div>
+      <div class="rm shipped rv">
+        <h3>v0.3.0 <span class="tag">SHIPPED</span></h3>
+        <ul>
+          <li class="done">The temple identity — marble &amp; basalt themes, frameless window, engraved everything</li>
+          <li class="done">Scenario analytics + capture-to-clipboard + grind session coach</li>
+          <li class="done">Two-phase launch: grid painted in under 2s, chips stream after</li>
+          <li class="done">Plain-English UX — “spread” instead of CV%</li>
+        </ul>
+      </div>
+      <div class="rm shipped rv">
+        <h3>v0.1.5 – v0.2.1 <span class="tag">SHIPPED</span></h3>
+        <ul>
+          <li class="done">Weekly report + XP, family overview, PB progression, CSV export (v0.2.0)</li>
+          <li class="done">Grind chips, time-trained chip, weakest-first sort (v0.2.1)</li>
+          <li class="done">Consistency &amp; plateau detection (v0.1.9) · full local ranks + backup (v0.1.8)</li>
+          <li class="done">Grind-next panel + ladder capping (v0.1.6–v0.1.7) · smart sync (v0.1.5)</li>
+        </ul>
+      </div>
+      <div class="rm later rv">
+        <h3>Later <span class="tag">UNPROMISED</span></h3>
         <ul>
           <li>Windows installer (NSIS via Tauri bundler)</li>
         </ul>
       </div>
     </div>
-</section>
+  </section>
 
   <footer>
     <div class="wrap" style="padding:0">
       <span>KAIROS · MIT · built with Rust, Tauri v2, Svelte 5, Chart.js</span>
       <a href="https://github.com/Digitals06/kairos" target="_blank" rel="noopener">GitHub</a>
       <a href="https://ko-fi.com/Q2S1237A82" target="_blank" rel="noopener">Ko-fi</a>
-      <span class="sp">not affiliated with KovaaK's or evxl.app</span>
+      <span class="sp">not affiliated with KovaaK's or evxl.app · local records only — no telemetry</span>
     </div>
   </footer>
 </div>
@@ -436,10 +647,27 @@ const io = new IntersectionObserver(es => es.forEach(e => {
 }), { threshold: 0.12 });
 document.querySelectorAll('.rv').forEach(el => io.observe(el));
 
+/* ── theme toggle: marble / basalt, remembered ── */
+const root = document.documentElement;
+const themeColor = document.getElementById('theme-color');
+function paintTheme(t, persist) {
+  root.dataset.theme = t;
+  if (persist) { try { localStorage.setItem('kairos-theme', t); } catch (e) {} }
+  document.querySelectorAll('.theme-opt').forEach(b => b.classList.toggle('active', b.dataset.set === t));
+  themeColor.setAttribute('content', t === 'basalt' ? '#141210' : '#efe9dc');
+}
+document.querySelectorAll('.theme-opt').forEach(b => b.addEventListener('click', () => paintTheme(b.dataset.set, true)));
+paintTheme(root.dataset.theme || 'basalt', false);
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+  let saved = null; try { saved = localStorage.getItem('kairos-theme'); } catch (err) {}
+  if (!saved) paintTheme(e.matches ? 'basalt' : 'marble', false);
+});
+
+/* ── lightbox ── */
 const lb = document.getElementById('lightbox');
 const lbImg = lb.querySelector('img');
 const lbCount = lb.querySelector('.lb-count');
-const gallery = [...document.querySelectorAll('figure.shot img, .hero-shot img')];
+const gallery = [...document.querySelectorAll('figure.shot img, .hero-shot img, .lights img')];
 let lbIdx = 0;
 function lbShow(i) {
   lbIdx = (i + gallery.length) % gallery.length;
@@ -459,11 +687,11 @@ addEventListener('keydown', (e) => {
   else if (e.key === 'ArrowRight') lbShow(lbIdx + 1);
 });
 
-// Live release badges: version = newest stable release; download count =
-// TOTAL across ALL releases (static fallback above stays if the API fails).
-// HISTORY_DOWNLOADS compensates for replaced assets: GitHub resets an
-// asset's counter when its file is swapped, so the downloads already earned
-// by the pre-fix v0.2.0 build (89) are added back as a constant.
+/* ── live release badges: version = newest stable release; downloads =
+   TOTAL across ALL releases (static fallback above stays if the API fails).
+   HISTORY_DOWNLOADS compensates for replaced assets: GitHub resets an
+   asset's counter when its file is swapped, so the downloads already earned
+   by the pre-fix v0.2.0 build (89) are added back as a constant. ── */
 const HISTORY_DOWNLOADS = 89;
 (async () => {
   try {
@@ -484,7 +712,7 @@ const HISTORY_DOWNLOADS = 89;
           .reduce((s, a) => s + (a.download_count || 0), 0),
       0,
     );
-    document.getElementById('rel-dl').textContent = '⬇ ' + (total + HISTORY_DOWNLOADS);
+    document.getElementById('rel-dl').textContent = '↓ ' + (total + HISTORY_DOWNLOADS);
   } catch { /* keep static fallback */ }
 })();
 </script>
