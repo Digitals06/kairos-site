@@ -442,10 +442,10 @@ footer a{font-family:var(--font-display); font-size:11.5px; letter-spacing:.1em;
       <a class="btn btn-accent" href="https://github.com/Digitals06/kairos/releases" target="_blank" rel="noopener">↓ Download kairos.exe</a>
       <a class="btn" href="https://github.com/Digitals06/kairos" target="_blank" rel="noopener">View source on GitHub</a>
     </div>
-    <div class="badges"><span id="rel-ver" title="Latest GitHub release">v0.5.0</span><span id="rel-dl" title="total kairos.exe downloads, all releases">↓ 169</span><span>Rust</span><span>Tauri v2</span><span>Svelte 5</span><span>Chart.js</span><span>SQLite · local-first</span><span>MIT</span></div>
+    <div class="badges"><span id="rel-ver" title="Latest GitHub release">v0.5.0</span><span id="rel-dl" title="total kairos.exe downloads, all releases">↓ 174</span><span>Rust</span><span>Tauri v2</span><span>Svelte 5</span><span>Chart.js</span><span>SQLite · local-first</span><span>MIT</span></div>
     <figure class="hero-shot tablet rv">
       <picture><source srcset="assets/app-overview-basalt-v050.webp" type="image/webp"><img src="assets/app-overview-basalt-v050.png" alt="Kairos overview in the basalt theme — weekly plaque, grind coach and the stoa of benchmark cards"></picture>
-      <figcaption><strong>The temple at night — basalt theme</strong>The weekly plaque, the grind coach and the stoa of benchmark families. The window is frameless — and closes to the tray while you play.<span class="shot-ver">captured from v0.5.0 · Oct 2026</span></figcaption>
+      <figcaption><strong>The temple at night — basalt theme</strong>The weekly plaque, the grind coach and the stoa of benchmark families. The window is frameless — a close quits by default, or keep it watching in the tray if you opt in.<span class="shot-ver">captured from v0.5.0 · Oct 2026</span></figcaption>
     </figure>
   </header>
 
@@ -485,14 +485,14 @@ footer a{font-family:var(--font-display); font-size:11.5px; letter-spacing:.1em;
       <div class="card rv"><div class="ico"><svg><use href="#i-grid"/></svg></div><h3>One card per family</h3><p>The stoa groups benchmarks by family: best rank seal, difficulty count, and an unroll showing every difficulty's tier-ladder rungs with grind chips — ▶ runs to next tier, or complete.</p></div>
       <div class="card rv"><div class="ico"><svg><use href="#i-bars"/></svg></div><h3>Per-scenario detail</h3><p>Score history with PB progression — local plays and sync snapshots, deduplicated. Running high, 7-day average, 30-day improvement — and a sort that cycles weakest → strongest → order.</p></div>
       <div class="card rv"><div class="ico"><svg><use href="#i-scales"/></svg></div><h3>Consistency &amp; plateau detection</h3><p>Every grind target carries spread — how steady your recent runs are — plus plateau tags, so you can swap a stalled grind for one that's still climbing.</p></div>
-      <div class="card rv"><div class="ico"><svg><use href="#i-flame"/></svg></div><h3>Live local plays</h3><p>A background watcher reads KovaaK's <code>Stats</code> folder — new sessions land in your charts on their own, and it keeps watching while Kairos sits in the tray. No refresh click.</p></div>
+      <div class="card rv"><div class="ico"><svg><use href="#i-flame"/></svg></div><h3>Live local plays</h3><p>A background watcher reads KovaaK's <code>Stats</code> folder — new sessions land in your charts on their own, and with tray mode on it keeps watching while KovaaK's runs. No refresh click.</p></div>
       <div class="card rv"><div class="ico"><svg><use href="#i-bell"/></svg></div><h3>Rank-change toasts</h3><p>Every sync diffs your two newest snapshots per benchmark. Rank moves? A <code>RANK UP</code> toast with old → new tier — or one summary when several shift.</p></div>
       <div class="card rv"><div class="ico"><svg><use href="#i-columns"/></svg></div><h3>Full benchmark coverage</h3><p>Every benchmark tracked on <a href="https://evxl.app" target="_blank" rel="noopener">evxl.app</a> — Voltaic, Revosect, PureG, Aimerz+ and the rest — with official rank names and colors. Your own benches sit in the same stoa.</p></div>
       <div class="card rv"><div class="ico"><svg><use href="#i-search"/></svg></div><h3>Search, filters &amp; favorites</h3><p>Twelve type tabs mirroring evxl's own grouping — plus a <strong>Custom</strong> tab for your benches — name search, and pins that survive restarts. Keyboard-first: ↓/↑ walk the stoa, Enter opens, Esc backs out.</p></div>
       <div class="card rv"><div class="ico"><svg><use href="#i-rule"/></svg></div><h3>Custom benchmarks</h3><p>Author a bench from scenarios you already play: split them into subcategories, write your own tier names, set per-scenario thresholds. Three rank rules — every scenario counts, top N per subcategory, or global energy — scored by the same engine as the registry. Export or import a bench as JSON.</p></div>
       <div class="card rv"><div class="ico"><svg><use href="#i-share"/></svg></div><h3>Share card</h3><p>One button composes a 1200 × 630 card — week, level bar, plays-per-day strip, benchmark table, top movers — ready to copy into Discord or save as a PNG.</p></div>
       <div class="card rv"><div class="ico"><svg><use href="#i-percent"/></svg></div><h3>Global percentiles, opt-in</h3><p>Turn it on and a scenario's public board position — <code>#53 · top 10.1%</code> — appears beside its score history. Off by default; only board sizes are fetched, cached for a day.</p></div>
-      <div class="card rv"><div class="ico"><svg><use href="#i-tray"/></svg></div><h3>Tray companion</h3><p>Close the window and Kairos keeps watch from the system tray — the CSV watcher stays live while KovaaK's runs. The tray menu shows the window, launches the game, or quits.</p></div>
+      <div class="card rv"><div class="ico"><svg><use href="#i-tray"/></svg></div><h3>Tray companion</h3><p>Opt in and closing the window hides Kairos to the system tray instead of quitting — the CSV watcher stays live while KovaaK's runs. The tray menu shows the window, launches the game, or quits.</p></div>
       <div class="card rv"><div class="ico"><svg><use href="#i-summary"/></svg></div><h3>Session summaries</h3><p>A 20-minute gap closes the session; a toast reports its plays and PBs — best gain and scenario — computed from local CSV data only.</p></div>
       <div class="card rv"><div class="ico"><svg><use href="#i-go"/></svg></div><h3>One-click launch</h3><p>GO buttons sit on every grind row and the weak-spot bar; each benchmark page carries Launch in KovaaK's. Official steam deep links — straight into the scenario or playlist.</p></div>
       <div class="card rv"><div class="ico"><svg><use href="#i-pin"/></svg></div><h3>Weak-spot strip</h3><p>On every benchmark page a sticky bar keeps the next scenario pinned in view — its gap to the next tier, and a GO to launch it.</p></div>
@@ -620,7 +620,7 @@ cd ..\src-tauri
       <div class="rm shipped rv">
         <h3>v0.4.0 <span class="tag">SHIPPED</span></h3>
         <ul>
-          <li class="done">Tray mode + post-session summaries — Kairos watches while you play</li>
+          <li class="done">Opt-in tray mode + post-session summaries — keep watch while you play</li>
           <li class="done">Playlists &amp; launch — GO buttons and Launch in KovaaK's deep links</li>
           <li class="done">Weak-spot strip, reconcile chip, keyboard navigation, favorites inline tick</li>
         </ul>
@@ -716,8 +716,9 @@ addEventListener('keydown', (e) => {
    TOTAL across ALL releases (static fallback above stays if the API fails).
    HISTORY_DOWNLOADS compensates for replaced assets: GitHub resets an
    asset's counter when its file is swapped, so the downloads already earned
-   by the pre-fix v0.2.0 build (89) are added back as a constant. ── */
-const HISTORY_DOWNLOADS = 89;
+   by the pre-fix v0.2.0 build (89) and the stale pre-fix v0.5.0 exe (5) are
+   added back as a constant. ── */
+const HISTORY_DOWNLOADS = 94;
 (async () => {
   try {
     const c = new AbortController();
